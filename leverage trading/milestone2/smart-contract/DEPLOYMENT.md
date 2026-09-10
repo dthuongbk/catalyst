@@ -19,6 +19,11 @@ Both hold **this** deployment and nothing else. The transactions of the releases
 that preceded it were dropped: their script hashes and their registry no longer
 exist, and reading them beside these would only mislead. Git has them.
 
+One caveat on the parameters below. §8 lowers five of them to take `fee_reserve`
+from 33 ADA to 19.5, and **has not been submitted**: read §2 as what is live and
+§8 as the transaction to run next. It changes no validator source, so every hash
+in §1 is unaffected and this registry stays the one in use.
+
 ---
 
 ## 1. What is deployed
@@ -997,3 +1002,132 @@ floor, sold leg and expiry off that loan's own datum.
 `bad_debt` of **0** on all three pools is what says the seven closures landed
 whole, the §12.3 included — its recovered leg covered its debt exactly. The three
 loans still open carry no claim and can be closed by either route whenever.
+
+---
+
+## 8. The fee, and the two floors under it
+
+`fee_reserve` is what a trader fronts to place a market order, so it is the
+protocol's headline cost. It is **33 ADA** and this section takes it to
+**19.5** — a 41% cut that changes no validator source, moves no script hash,
+and needs one transaction per market.
+
+**Not submitted.** §1 through §7 are the deployment that ran; this is the
+parameter set to write next. What is proven here is that the numbers clear
+§1.3, the ledger's own minima and `adapter_minswap`'s batcher term, and that
+§15 admits the move from what is live — `lib/tests/market_params_test.ak`
+checks each of those. Not that a 19.5 ADA order fills against Minswap.
+
+### 8.1 What the 33 is made of
+
+§6.2.2.13 requires the reserve to cover `async_fill_cost`, which
+`order/utils.ak` defines as
+
+```
+async_fill_cost = venue_fee_budget + execution_tip + 2 x min_ada
+                = 20 + 3 + 2 x 5 = 33 ADA
+```
+
+The two `min_ada` fund the loan and the position a fill creates. None of the
+three terms was sized against anything: the budget and the tip were set
+generously, and `min_ada` at 5 ADA is roughly twice what the ledger wants for
+any UTxO this protocol writes.
+
+### 8.2 The four floors, three of them the ledger's
+
+None of these is visible in the validator source, and none of them is a §1.3
+bound.
+
+| Floor | Where | Value |
+|---|---|---:|
+| `lovelace_of(tip_out) == execution_tip`, an **equality**, so the tip output is its own minADA — a bare output with a stake credential is 85 bytes, `(160 + 85) x 4310` | `order/execute.ak:336` | **1.055950** |
+| `lovelace_of(tip_out) == rollback_tip`, likewise | `loan/rollback.ak:122` | **1.055950** |
+| `min_ada - collector_reward` is §11.2.7's grace tip, so that difference is a minADA too | `loan/liquidate.ak:252` | **1.055950** |
+| `max_batcher_fee <= venue_fee_budget - max_cancel_fee - min_ada - rollback_tip`, and Minswap V2's batcher fee is fixed | `adapter/minswap.ak:409` | **2.000000** |
+
+Substituting §1.3's `venue_fee_budget >= max_cancel_fee + min_ada +
+rollback_tip` and the batcher term into `async_fill_cost` collapses the whole
+thing to one inequality:
+
+```
+fee_reserve  >=  batcher_fee + max_cancel_fee + 3 x min_ada
+                            + rollback_tip + execution_tip
+```
+
+`min_ada` is multiplied by **three** — once for the venue order and twice for
+the loan and position — so every lovelace shaved off it returns three. That is
+the whole of why the first floor below is so much higher than the second.
+
+### 8.3 Two floors, and only one is reachable from here
+
+```
+min_ada = 5.0 (deployed)   >=  2.0 + 0 + 15.000000 + 1.055950 + 1.055950  =  19.111900
+min_ada free               >=  2.0 + 0 + 3 x 2.331710 + 1.055950 + 1.055950  =  11.107030
+```
+
+The second figure takes `min_ada` down to 2.331710, which is what the ledger
+wants for the heaviest UTxO carrying nothing but that floor: the loan output
+holding a `Claim`, with its `LoanNFT` and the collateral token, 381 bytes.
+
+**Ten ADA is under both.** Not by a parameter choice and not by a code change
+either: 11.107 already assumes a zero cancel fee, both tips at the ledger's
+minimum, and `min_ada` written at exactly the ledger's answer for the largest
+UTxO in the protocol — where one field added to `LoanDatum` would make every
+loan output unspendable.
+
+### 8.4 What this section changes
+
+The five charges, and nothing else:
+
+| | Was | Now | Floor | Headroom |
+|---|---:|---:|---:|---:|
+| `venue_fee_budget` | 20.0 | **8.4** | 8.300000 | 0.100000 |
+| `execution_tip` | 3.0 | **1.1** | 1.055950 | 0.044050 |
+| `rollback_tip` | 3.0 | **1.1** | 1.055950 | 0.044050 |
+| `max_cancel_fee` | 2.0 | **0.2** | 0 | — |
+| `collector_reward` | 3.0 | **1.2** | — | 2.744050 under its cap |
+| **`fee_reserve`** | **33.0** | **19.5** | 19.111900 | 0.388100 |
+
+`min_ada` stays at 5.0. `min_liquidator_reward` stays at 10, where
+`min_liquidator_reward x basis_point <= min_tx_amount x liquidator_reward_cap`
+already holds with equality.
+
+0.388100 ADA is all the slack left in the reserve. There is no further
+parameter change to make.
+
+### 8.5 Why it needs no genesis
+
+All five are **datum** fields, and §1.3's monotone rules run one way:
+`venue_fee_budget`, `execution_tip` and `max_cancel_fee` may only **fall**.
+Every charge above therefore moves in the direction §15 already permits, and
+`--update-market-param` applies them to the markets that are live right now —
+one transaction each, spending the `AdminNFT`.
+
+`min_ada` is the exception, and it is the reason 12.3 ADA is not on this list.
+It is a compile-time constant in eighteen modules, so lowering it moves nine of
+the eleven script hashes; `order_skh`, `loan_repay_skh` and `loan_close_skh` are
+immutable registry fields, so no `protocol_config` transition can adopt the
+moved hashes and the deployment would need a fresh genesis. The trade is 7.2 ADA
+of reserve against re-proving all eighty-one transactions of §3 on a new
+registry, and this section does not take it.
+
+| | `min_ada` | `fee_reserve` | Hashes | Needs |
+|---|---:|---:|---|---|
+| Deployed today | 5.0 | 33.0 | — | — |
+| **This section** | 5.0 | **19.5** | **all 11 unmoved** | one `--update-market-param` per market |
+| Not taken | 2.6 | 12.3 | 9 of 11 move | fresh genesis, §3 re-run |
+
+### 8.6 Two things to settle before submitting
+
+1. **The tips are below the cost of earning them.** `execution_tip` becomes
+   1.1 ADA and the transaction that earns it pays about 3.7 ADA in fees. That
+   was already true at 3 ADA, so this widens an existing gap rather than opening
+   one — but a tip that does not cover its own transaction will not attract a
+   third-party executor, and the 1.055950 floor means the gap cannot be closed
+   from below. Only raising the tip closes it, and §1.3 will not let it rise
+   again on a market once lowered.
+2. **`max_cancel_fee` at 0.2 ADA prices the cancel arm below its own
+   transaction too.** §4.3's canceller is whoever notices an expired claim, and
+   0.2 ADA is not a reason to notice. §12.2.2 is what makes this matter: a claim
+   nobody cancels leaves the loan, its margin and its position stranded with the
+   debt still counted in `total_borrow`.

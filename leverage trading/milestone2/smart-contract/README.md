@@ -13,6 +13,11 @@ the validators alone: the shapes there are the ones the validators accepted on
 chain, and section 6 lists the eleven mistakes that each cost a rejected
 transaction here.
 
+Section 8 is the one part of it that has not run: it takes `fee_reserve` from
+33 ADA to 19.5 by lowering five market **parameters**, so no validator source
+moves and every hash in section 1 stands. It also derives the two floors under
+that number and shows why 10 ADA is below both.
+
 `deployments/preprod.json` is the same deployment in machine-readable form — the
 registry, the reference-script out-refs, and the NFT names of everything still
 alive. `deployments/preprod-transactions.jsonl` is the append-only trail, one line
