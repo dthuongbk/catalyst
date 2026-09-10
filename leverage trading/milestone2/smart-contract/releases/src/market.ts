@@ -1,8 +1,18 @@
 import { Constr, type Data, getAddressDetails } from "@lucid-evolution/lucid";
 
-/// The market the deployer writes. Its twin is `t_preprod_market()` in
-/// `lib/protocol/create_market.ak`, and the test beside it is what proves these
-/// numbers clear every §1.3 bound — change one here, change it there.
+/// The market the deployer writes.
+///
+/// `t_preprod_market()` in `lib/protocol/create_market.ak` was this record's
+/// twin and is **no longer**: it still holds the values the live registry was
+/// created with, deliberately, because every validator hash is a compile-time
+/// function of its source and nothing in `lib/` may move while that registry is
+/// the one in use. The five lovelace charges below are datum fields, so §15
+/// rewrites them on a market that is already open; the fixture describes what
+/// that market opened with.
+///
+/// `lib/tests/market_params_test.ak` is what proves these numbers now. It checks
+/// them against the whole of §1.3 **and** against the deployed set as a §15
+/// transition, which the old fixture's self-check could not do.
 ///
 /// ADA is lent; fUSDM is the one accepted collateral. `supply_token` is ADA, which
 /// is the empty policy and the empty name, so §1.3's ADA clause applies:
@@ -23,12 +33,12 @@ export const MARKET = {
   loanOriginationFeeMinAmount: 0n,
   minTxAmount: 100_000_000n,
   liquidatorRewardCap: 1000n,
-  collectorReward: 3_000_000n,
+  collectorReward: 1_200_000n,
   minLiquidatorReward: 10_000_000n,
-  rollbackTip: 3_000_000n,
-  executionTip: 3_000_000n,
-  maxCancelFee: 2_000_000n,
-  venueFeeBudget: 20_000_000n,
+  rollbackTip: 1_100_000n,
+  executionTip: 1_100_000n,
+  maxCancelFee: 200_000n,
+  venueFeeBudget: 8_400_000n,
   maxSlippageCap: 300n,
   minClaimDuration: 600_000n,
   maxClaimDuration: 600_000n,
@@ -214,10 +224,17 @@ export const SUPPLY_IS_TOKEN = ACTIVE.supplyToken.policyId !== "";
 /// (`venue_fee_budget + execution_tip + 2 x min_ada`), so the same order can be
 /// filled either synchronously or against Minswap. `open_limit_price` is quoted
 /// the way the oracle quotes: units of `short_token` per unit of `long_token`.
+///
+/// `8_400_000 + 1_100_000 + 2 x 5_000_000 = 19_500_000` — down from 33 ADA. This
+/// is the reserve a trader has to front to place a market order, so it is the
+/// protocol's headline cost, and at `min_ada = 5 ADA` its floor is 19.111900:
+/// 19.5 sits 0.388 above it and there is nothing further to take without moving
+/// `min_ada`, which no parameter change can do. DEPLOYMENT.md §8 derives both
+/// that floor and the deeper one a code change would reach.
 export const ORDER = {
   shortAmount: 300_000_000n,
   margin: 150_000_000n,
-  feeReserve: 33_000_000n,
+  feeReserve: 19_500_000n,
   openLimitPriceNum: 4n,
   openLimitPriceDen: 1n,
   minLiquidationThreshold: 8000n,
