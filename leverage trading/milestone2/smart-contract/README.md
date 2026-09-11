@@ -31,6 +31,7 @@ per submission.
 | `lib/` | the arms themselves — `loan/`, `order/`, `pool/`, `position/`, `protocol/`, `adapter/` |
 | `releases/` | the deployment tooling: one command per arm, see [`releases/README.md`](releases/README.md) |
 | `deployments/` | what is deployed, and the trail of how it got there |
+| `TESTREPORT.md` | the test suite: coverage, method, and what it cannot see |
 | `protocol_script.json` | daken's one-shot minting policy, used as `nft_mint` for the ProtocolNFT and AdminNFT |
 
 Three of the validators are one lifecycle across three hosts — `loan` carries
@@ -43,6 +44,12 @@ section 1 says which.
 ```bash
 aiken check
 ```
+
+287 tests across 32 modules. **[`TESTREPORT.md`](TESTREPORT.md)** is the account
+of them: what a `fail` block does and does not prove, why 193 of them live in
+`lib/tests/` rather than beside their subject, coverage per module, and —
+section 5 — the six things this suite is blind to, which is the half of the
+picture [`DEPLOYMENT.md`](DEPLOYMENT.md) carries.
 
 ```bash
 aiken build -t silent
