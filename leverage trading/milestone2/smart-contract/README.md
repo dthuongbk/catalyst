@@ -1,4 +1,4 @@
-# TIC-30 — leverage order book on Cardano
+# Leverage order book on Cardano
 
 Aiken validators for a leverage order book with per-DEX adapters, plus the tooling
 that deployed them and the record of what that deployment did on chain.
