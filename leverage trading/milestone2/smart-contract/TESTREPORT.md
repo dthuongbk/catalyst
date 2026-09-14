@@ -1,4 +1,4 @@
-# Test report — TIC-30 smart contracts
+# Test report — Smart contracts
 
 | | |
 |---|---|
@@ -78,7 +78,7 @@ So the property this branch holds, and which is worth re-checking after any
 change to it:
 
 ```
-$ diff <(hashes from main) <(hashes from HEAD)     # all eleven identical
+$ diff <(hashes from main) <(hashes from HEAD)     # all eleven idenal
 $ git diff --name-only main -- lib/                # nothing but new files
 ```
 
@@ -128,7 +128,7 @@ paths in the protocol.
 | `order/utils` | 4 | | **subtotal** | **94** |
 
 Test counts are not a quality ranking. `loan/` has the fewest per line and the
-densest arithmetic, because its tests are table-driven over the arithmetic
+densest arithme, because its tests are table-driven over the arithmetic
 directly — `loan/utils`' seven blocks cover `debt_now`, `debt_at`, the health
 gate, the seized/repaid shortfall and the reward clamp across dozens of rows —
 while `order/` and `position/` need a whole transaction shape per case and so
