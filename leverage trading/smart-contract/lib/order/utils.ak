@@ -208,6 +208,8 @@ pub fn valid_order_params(order: OrderDatum, market: MarketDatum) -> Bool {
     (order.open_limit_price.denominator > 0)?,
     (order.take_profit_price.numerator >= 0)?,
     (order.take_profit_price.denominator > 0)?,
+    (order.stop_loss_price.numerator >= 0)?,
+    (order.stop_loss_price.denominator > 0)?,
     (order.min_liquidation_threshold > 0)?,
     (order.min_liquidation_threshold <= constants.basis_point)?,
     (order.min_execution_amount >= market.min_tx_amount)?,

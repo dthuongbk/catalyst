@@ -71,6 +71,8 @@ pub fn valid_position_params(position: PositionDatum) -> Bool {
   and {
     (position.take_profit_price.numerator >= 0)?,
     (position.take_profit_price.denominator > 0)?,
+    (position.stop_loss_price.numerator >= 0)?,
+    (position.stop_loss_price.denominator > 0)?,
     (position.min_execution_amount > 0)?,
     (position.max_slippage > 0)?,
   }

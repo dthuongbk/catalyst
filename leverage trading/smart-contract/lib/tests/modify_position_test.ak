@@ -72,6 +72,7 @@ fn t_position() -> PositionDatum {
   PositionDatum {
     long_token: t_long,
     take_profit_price: PRational(2, 1),
+    stop_loss_price: PRational(0, 1),
     min_execution_amount: 100_000_000,
     max_slippage: 300,
     beneficiary: t_wallet(),
@@ -176,6 +177,16 @@ test modify_position_accepts_clearing_the_take_profit_price() {
   )
 }
 
+/// `stop_loss_price` is rewritten the same way, and `0` turns it off.
+test modify_position_accepts_a_new_stop_loss_price() {
+  t_run(
+    t_position_out(
+      t_position_value(constants.min_ada),
+      PositionDatum { ..t_position(), stop_loss_price: PRational(3, 2) },
+    ),
+  )
+}
+
 test modify_position_accepts_a_rising_min_execution_amount() {
   t_run(
     t_position_out(
@@ -208,6 +219,15 @@ test modify_position_rejects_a_zero_take_profit_denominator() fail {
     t_position_out(
       t_position_value(constants.min_ada),
       PositionDatum { ..t_position(), take_profit_price: PRational(1, 0) },
+    ),
+  )
+}
+
+test modify_position_rejects_a_zero_stop_loss_denominator() fail {
+  t_run(
+    t_position_out(
+      t_position_value(constants.min_ada),
+      PositionDatum { ..t_position(), stop_loss_price: PRational(1, 0) },
     ),
   )
 }

@@ -47,6 +47,7 @@ fn t_position() -> PositionDatum {
   PositionDatum {
     long_token: ("usdm_pid", "usdm"),
     take_profit_price: PRational(2, 1),
+    stop_loss_price: PRational(0, 1),
     min_execution_amount: 100_000_000,
     max_slippage: 300,
     beneficiary: t_wallet(),
@@ -299,6 +300,27 @@ test valid_position_params_bounds_each_field() {
         label: "a zero denominator",
         got: position_utils.valid_position_params(
           PositionDatum { ..base, take_profit_price: PRational(1, 0) },
+        ),
+        want: False,
+      },
+      BoolCase {
+        label: "a stop-loss below the price",
+        got: position_utils.valid_position_params(
+          PositionDatum { ..base, stop_loss_price: PRational(3, 2) },
+        ),
+        want: True,
+      },
+      BoolCase {
+        label: "a negative stop-loss numerator",
+        got: position_utils.valid_position_params(
+          PositionDatum { ..base, stop_loss_price: PRational(-1, 1) },
+        ),
+        want: False,
+      },
+      BoolCase {
+        label: "a zero stop-loss denominator",
+        got: position_utils.valid_position_params(
+          PositionDatum { ..base, stop_loss_price: PRational(1, 0) },
         ),
         want: False,
       },

@@ -115,6 +115,7 @@ fn t_datum() -> OrderDatum {
     short_amount: 500_000_000,
     open_limit_price: PRational(1, 1),
     take_profit_price: PRational(2, 1),
+    stop_loss_price: PRational(0, 1),
     min_liquidation_threshold: 8000,
     min_execution_amount: 100_000_000,
     max_slippage: 300,

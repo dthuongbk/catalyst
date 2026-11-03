@@ -26,6 +26,7 @@ pub type OrderDatum {
   short_amount: Int,
   open_limit_price: PRational,
   take_profit_price: PRational,
+  stop_loss_price: PRational,
   min_liquidation_threshold: LiquidationThreshold,
   min_execution_amount: Int,
   max_slippage: Basis,
@@ -39,6 +40,7 @@ pub type OrderDatum {
 pub type PositionDatum {
   long_token: TupleAsset,
   take_profit_price: PRational,
+  stop_loss_price: PRational,
   min_execution_amount: Int,
   max_slippage: Basis,
   beneficiary: Address,

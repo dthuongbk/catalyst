@@ -97,6 +97,7 @@ pub fn validate(
     max_slippage,
     beneficiary,
     take_profit_price,
+    stop_loss_price,
     ..
   } = position_in_datum
 
@@ -184,6 +185,7 @@ pub fn validate(
       position_out_idx,
       loan_out_idx,
       take_profit_price,
+      stop_loss_price,
       owner_authorised,
     )
   } else {
@@ -251,6 +253,21 @@ fn take_profit_reached(
   price.numerator * take_profit_price.denominator >= take_profit_price.numerator * price.denominator
 }
 
+/// The same reading of the same price, in the other direction: a stop-loss is
+/// reached once the long leg is worth **no more** than the trader said. Nothing
+/// else about the claim differs — §4.1's floor still has to clear `health_floor`
+/// at `debt_at_expiry`, so a stop-loss is an exit above the liquidation
+/// threshold, not a substitute for §11 below it.
+fn stop_loss_reached(
+  prices: Pairs<TupleAsset, PRational>,
+  short_token: TupleAsset,
+  long_token: TupleAsset,
+  stop_loss_price: PRational,
+) -> Bool {
+  let price = loan_utils.price_or_unit(prices, short_token, long_token)
+  price.numerator * stop_loss_price.denominator <= stop_loss_price.numerator * price.denominator
+}
+
 // ------------------------------------------------------------------- §10.2.1
 
 fn place_sell_claim(
@@ -279,6 +296,7 @@ fn place_sell_claim(
   position_out_idx: Int,
   loan_out_idx: Int,
   take_profit_price: PRational,
+  stop_loss_price: PRational,
   owner_authorised: Bool,
 ) -> Contribution {
   let Registry {
@@ -334,11 +352,11 @@ fn place_sell_claim(
       debt,
     )?
 
-  // §10.2.1.1 — the trader's own claim needs the ticket. Without it this is a
-  // take-profit, and what authorises it is the standing instruction the trader
-  // wrote into the position: close once the oracle says the long leg is worth
-  // `take_profit_price`. The claim is otherwise identical, so nothing below
-  // knows which of the two placed it.
+  // §10.2.1.1 — the trader's own claim needs the ticket. Without it the claim is
+  // authorised by a standing instruction the trader wrote into the position
+  // instead: close once the oracle says the long leg has risen to
+  // `take_profit_price`, or fallen to `stop_loss_price`. The claim is otherwise
+  // identical, so nothing below knows which of the three placed it.
   expect or {
       owner_authorised,
       and {
@@ -346,6 +364,12 @@ fn place_sell_claim(
         // sentinel for a position with no take-profit standing at all.
         (take_profit_price.numerator > 0)?,
         take_profit_reached(prices, short_token, long_token, take_profit_price)?,
+      },
+      and {
+        // The same sentinel reads the same way on this side: no price is at or
+        // below zero, so `0` is a position with no stop-loss standing.
+        (stop_loss_price.numerator > 0)?,
+        stop_loss_reached(prices, short_token, long_token, stop_loss_price)?,
       },
     }
 
@@ -748,6 +772,41 @@ test health_floor_nests_its_two_ceilings() {
         threshold,
         PRational { numerator: num, denominator: den },
       ) == expected
+    },
+  )
+}
+
+/// §10.2.1.1's two standing instructions read the same oracle price from
+/// opposite sides. The rows below pin the boundary of each: at the stated price
+/// both are "reached", one step away only one of them is. `0` is the sentinel
+/// the gate tests separately, so it is not in this table — a price of zero is
+/// not representable by `PRational` with a positive denominator anyway.
+test standing_instructions_face_opposite_directions() {
+  let short = (#"", #"")
+  let long = (#"cafe", #"4c4f4e47")
+  let at = fn(num: Int, den: Int) { [Pair(long, PRational { numerator: num, denominator: den })] }
+  // The trader is long, so the take-profit is above and the stop-loss below.
+  let tp = PRational { numerator: 3, denominator: 1 }
+  let sl = PRational { numerator: 3, denominator: 2 }
+  let cases =
+    [
+      // (price, take-profit reached, stop-loss reached)
+      (at(2, 1), False, False),
+      // exactly at each threshold, both are inclusive
+      (at(3, 1), True, False),
+      (at(3, 2), False, True),
+      // past each of them
+      (at(4, 1), True, False),
+      (at(1, 1), False, True),
+    ]
+  list.all(
+    cases,
+    fn(row) {
+      let (prices, want_tp, want_sl) = row
+      and {
+        (take_profit_reached(prices, short, long, tp) == want_tp)?,
+        (stop_loss_reached(prices, short, long, sl) == want_sl)?,
+      }
     },
   )
 }

@@ -66,12 +66,15 @@ if (args.includes("--deploy")) {
     BigInt(args[i + 1] ?? "200000000"),
     w === "fusdm" ? "fusdm" : w === "fbtc" ? "fbtc" : "ada");
 } else if (args.includes("--modify-position")) {
-  // `--modify-position [tpNum] [tpDen]` — the take-profit price to write.
+  // `--modify-position [tpNum] [tpDen] [slNum] [slDen]` — the two standing
+  // instructions to write. Omit the stop-loss pair to leave it as it is.
   const rest = args.slice(args.indexOf("--modify-position") + 1)
     .filter((a) => /^\d+$/.test(a));
   await deployer.modifyPosition(
     rest[0] !== undefined ? BigInt(rest[0]) : undefined,
-    rest[1] !== undefined ? BigInt(rest[1]) : undefined);
+    rest[1] !== undefined ? BigInt(rest[1]) : undefined,
+    rest[2] !== undefined ? BigInt(rest[2]) : undefined,
+    rest[3] !== undefined ? BigInt(rest[3]) : undefined);
 } else if (args.includes("--take-profit")) {
   // §10.2.1 with no owner input: the oracle authorises it, not the ticket.
   await deployer.closeAsync(true);

@@ -4,11 +4,11 @@ Every transaction below was built and submitted on **preprod**, against the real
 Minswap V2. Each hash is the evidence that the arm it names is buildable, and the
 shapes recorded with it are the shapes the validators accepted.
 
-Nine arms are absent, and §5 is the account of why — two of the three causes were
-this repository's own and are fixed; the third is a change to the oracle's price
-path dated to 02:29 UTC on 4 September, after which nothing that reads a price
-builds. Every one of those nine ran on the registry immediately before this one,
-against ten of these same eleven validators; §5 lists them with their hashes.
+Three arms are absent, and one external fact accounts for all three: the Minswap
+preprod batcher filled none of the venue orders this registry posted. Every one of
+them was returned at expiry instead, so §7.5, §8 and §10.2.2 — the venue settling,
+`SettleClaim` and the repay that a fill funds — have no hash here. The arms that
+place those orders, §7.2 and §10.2.1, are in §3 with theirs.
 
 The tooling that produced it is `releases/` in this repository — one command per
 arm, `bun run index.ts --<command>`. Its `deployments/preprod.json` is the
@@ -31,10 +31,10 @@ in §1 is unaffected and this registry stays the one in use.
 | | |
 |---|---|
 | Network | Preprod |
-| ProtocolNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.bb97dfdc793e6184199bda059bb49c9bac57f533fa73a1f73d4f2c6e41429fe1` |
-| AdminNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.47b7d21f8bb67cf1c6a5ded9623a553b087045955aa525d397bc37a7079cd420` |
-| `protocol_config` UTxO | at `addr_test1wp3npccjwvnkuxzly5w6ntyglhad3mhaeh5ea9h4fzqjm0glkedh3` |
-| Genesis | [`7e291ad34a25ded0…`](https://preprod.cardanoscan.io/transaction/7e291ad34a25ded08f2dc0e9b74b61add19899abcd19590e986a110369cd8983) |
+| ProtocolNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.92882ac93945e9575af5c5f5b6eebd226a63327f4375a0771718393ae2f12f66` |
+| AdminNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.41807518040679c22f08d4a0b8c0cb6c39f40a08da07e427d531add242a29d51` |
+| `protocol_config` UTxO | at `addr_test1wpxaflseqekc6g3c0964w83pl0gfeavp5wq6dzzumyc9fwgyedjgz` |
+| Genesis | [`4059a4e9a94499ad…`](https://preprod.cardanoscan.io/transaction/4059a4e9a94499adba4b1a6471859b94f34a02ddd13ea23f6d2c1755897e8bd7) |
 | Reference scripts held at | `addr_test1qqv5l5k8zax8agy84qanqr44tr4padeescstfh9pexxktapdzjk7wvmnvwrgara7yay07vnhh78chyvla8yeuw5ltxysx2qgkv` |
 | Oracle (`oracle_skh`) | `3158c9a7ba551eb3b6b9aa578e7995dec5ce34e272fde0bda76b46d1` |
 
@@ -42,25 +42,25 @@ in §1 is unaffected and this registry stays the one in use.
 
 | Validator | Script hash | Bytes |
 |---|---|---:|
-| `adapter_minswap` | `1b47e92b2a5d5ade45c756f09ba8a63ddc2ee53f2e8f03ed1594d2ee` | 8,558 |
-| `adapter_sync_generic` | `ca9cc341090f804f12ddb37066fc024ebb1513eabb9998e831edfdcd` | 3,326 |
-| `cancel` | `13d34e0048fb09a427ac2748e7ef0eb724236f6c3dd00fc48390614c` | 2,710 |
-| `loan` | `136036f18ed7c7375b7dcdc62e3966e18c56b5bd82edcdcc9f1b83b9` | 14,556 |
-| `loan_close` | `0e369bc8a7ed6294934e369dfffcf3bf11552a45c93cb80a44ed7be0` | 14,261 |
-| `loan_repay` | `b4537ed87606774e13a7afd3418c19ed40a5173573c4b18da329e7b6` | 12,987 |
-| `market_param` | `015edc41870a84291e1f51bf335aad791a0e4acbe1f478837519a9dd` | 6,115 |
-| `order` | `f0ec5f77926524f8e379c4867fbcc12ce7fb0dca9b7eec3ba8448ee6` | 13,214 |
-| `pool` | `96c6f792d1ebbcddf64793d3f735c79234fecc846cb4c09f61f5994d` | 12,566 |
-| `position` | `11fa0de8aff084ee8a48afe0c027883a9864baa1a1c8a8969451d69f` | 6,947 |
-| `protocol_config` | `6330e31273276e185f251da9ac88fdfad8eefdcde99e96f548812dbd` | 4,029 |
+| `adapter_minswap` | `9dda1b5cd9126857659905f2aec25cd3e1468ce31dbbeaff29c9b1f2` | 8,591 |
+| `adapter_sync_generic` | `b9c12b67425b205c0a95c48e11fc9f4b50b7fbb6461d4912dbb452c1` | 3,326 |
+| `cancel` | `127c9b24c9d282dc1d04b184e950bfd34c475969d40e473860928227` | 2,710 |
+| `loan` | `619079f0bf32bf6beecd858fa699ef81921f033bc7cabfa23d0363da` | 14,605 |
+| `loan_close` | `49603aea7a018f9bf821fd92290012b376ed117b2c316ecf22b25ab6` | 14,293 |
+| `loan_repay` | `bf30f525d1a7fca156ab4ab776c24d34322b65ffab9f9a31192d8b72` | 13,112 |
+| `market_param` | `6f8a501f011d9182250c1ce798f55ecf64c4b583f97b08f836f8b81a` | 6,115 |
+| `order` | `556737da840f96668759c10259a979b49af03c7b1f65b2b6270caf13` | 13,384 |
+| `pool` | `be26684781e1754344770c391dea8e2faeff0dfef19f7731a136cc77` | 12,566 |
+| `position` | `17d09609ae033aaa7870b93400d5551861339ed7f3a75613212e9223` | 7,075 |
+| `protocol_config` | `4dd4fe19066d8d22387975571e21fbd09cf581a381a6885cd93054b9` | 4,029 |
 
 ### Markets
 
 | Key | Lends | Collateral | MarketNFT |
 |---|---|---|---|
-| `market` | ADA | fUSDM | `967dcbbe51fdec736cbc2fef…` |
-| `marketFusdm` | fUSDM | fBTC | `5e3aa5e0086f87e4471e5619…` |
-| `marketFbtc` | fBTC | fUSDM | `8909a85c65a7674a1f2642da…` |
+| `market` | ADA | fUSDM | `57234f1a655324a9d9c9b300…` |
+| `marketFusdm` | fUSDM | fBTC | `8317111b23f8353d53efb2cb…` |
+| `marketFbtc` | fBTC | fUSDM | `188439b3547575a6ab456775…` |
 
 ## 2. Parameters
 
@@ -102,52 +102,82 @@ decimals on chain, which no datum carries today.
 
 ## 3. Every transaction, in the order it ran
 
-Thirty-two transactions, every one of them on this registry. `sweep`, `tidy` and
+Sixty-two transactions, every one of them on this registry. `sweep`, `tidy` and
 `consolidate` are wallet hygiene rather than arms of the spec — they are listed
 because they were submitted, not because they prove anything.
 
 | # | Command | What it proves | Transaction |
 |---:|---|---|---|
-| 1 | `genesis` | §14 genesis — the registry | [`7e291ad34a25ded0…`](https://preprod.cardanoscan.io/transaction/7e291ad34a25ded08f2dc0e9b74b61add19899abcd19590e986a110369cd8983) |
-| 2 | `publish protocol_config` | §5 rule 4 — a reference script | [`f19ea054b479c121…`](https://preprod.cardanoscan.io/transaction/f19ea054b479c1217fe8edbad57f52b7ab60d8e036709fde289123409983e268) |
-| 3 | `publish market_param` | §5 rule 4 — a reference script | [`bb1b2a0d2d3367b7…`](https://preprod.cardanoscan.io/transaction/bb1b2a0d2d3367b716c9fa71d840dea1f3b7c2edd8471c7b463580f0ff514565) |
-| 4 | `publish pool` | §5 rule 4 — a reference script | [`808123fa62e6df7d…`](https://preprod.cardanoscan.io/transaction/808123fa62e6df7d16af8e46211b701bb0753f7fad73628525aa0b07116e8111) |
-| 5 | `publish loan` | §5 rule 4 — a reference script | [`a27b7e86978e7332…`](https://preprod.cardanoscan.io/transaction/a27b7e86978e73328479a8f8a739108732666f7ef78e8fecfd8bfc01dc4c432d) |
-| 6 | `publish loan_repay` | §5 rule 4 — a reference script | [`9e7a1f562dc62950…`](https://preprod.cardanoscan.io/transaction/9e7a1f562dc62950a74ffc0c88b87e34783b186c01000d634d4a70fbcc681056) |
-| 7 | `publish loan_close` | §5 rule 4 — a reference script | [`8bd4e6d05e8cb9f2…`](https://preprod.cardanoscan.io/transaction/8bd4e6d05e8cb9f2b1335203682af66612c6dcb2dcd90af373477a1ced4045ff) |
-| 8 | `publish order` | §5 rule 4 — a reference script | [`cf9bc37aa13535d1…`](https://preprod.cardanoscan.io/transaction/cf9bc37aa13535d1c24bce7f1f5cad5596f8387b7d3847315e435839d50df318) |
-| 9 | `publish position` | §5 rule 4 — a reference script | [`f4e0fb3df4dd6c08…`](https://preprod.cardanoscan.io/transaction/f4e0fb3df4dd6c083590f2a733f110cd6762cc45a91c3e802ae90d6af3c7ff1d) |
-| 10 | `publish cancel` | §5 rule 4 — a reference script | [`61c2b5fa221c666b…`](https://preprod.cardanoscan.io/transaction/61c2b5fa221c666b0b3938aa2f243c507fb4827edac5e988ca21f79341e14d5e) |
-| 11 | `publish adapter_sync_generic` | §5 rule 4 — a reference script | [`183d671e7a825f9a…`](https://preprod.cardanoscan.io/transaction/183d671e7a825f9a7b6c4cc66d75601067a900b7797cbfb1dbdc5b1137e3354d) |
-| 12 | `adapter_minswap` | §5 rule 4 — the venue adapter | [`3c6238c6fd91aa64…`](https://preprod.cardanoscan.io/transaction/3c6238c6fd91aa64fee5b7a02a9a030ad987e4151cdd1937bc2e1dbad1bd5929) |
-| 13 | `register 9 account(s)` | stake registration | [`5bf7d961ac781fab…`](https://preprod.cardanoscan.io/transaction/5bf7d961ac781fabbf00ff79a705e8fbf61b5a9f0e6a6785544c8045278a7b7d) |
-| 14 | `update-adapters` | §14.2.6 `UpdateAdapters` | [`daa56f316f791555…`](https://preprod.cardanoscan.io/transaction/daa56f316f791555ed012391cc1748ed44d30452bfc14730345a3ca9fd97ea6a) |
-| 15 | `create-market` | §20 `CreateMarket` | [`e0dd22682b077a05…`](https://preprod.cardanoscan.io/transaction/e0dd22682b077a05d6e370a0406b89a60e5438e1c89ce9d00ab977e8b5106e97) |
-| 16 | `supply` | §18 `TopupWithdraw`, deposit | [`81bf262dbe24a253…`](https://preprod.cardanoscan.io/transaction/81bf262dbe24a2534eae4d9abe9982d0dfe25703d65d137c144292b1cd3fb2c9) |
-| 17 | `create-market` | §20 `CreateMarket` | [`cdf9d0207c3e70f4…`](https://preprod.cardanoscan.io/transaction/cdf9d0207c3e70f4c2f77625961183d14c7e4a7a4f58f6d22ccf82a2a122b5ff) |
-| 18 | `supply` | §18 `TopupWithdraw`, deposit | [`a5e88e955dde9b13…`](https://preprod.cardanoscan.io/transaction/a5e88e955dde9b13e6eddddb6fe8d562465d5ac5371f598791f40285f960f85a) |
-| 19 | `create-market` | §20 `CreateMarket` | [`905cbd8129747f4b…`](https://preprod.cardanoscan.io/transaction/905cbd8129747f4bc4dea5bd82f5104bcde3dbf08be20255f778d144041b68f2) |
-| 20 | `supply` | §18 `TopupWithdraw`, deposit | [`64bc73acfc27c860…`](https://preprod.cardanoscan.io/transaction/64bc73acfc27c860d4dc2d93162631d39c638354d1c16fd9880fa8e3477bf210) |
-| 21 | `sweep` | wallet hygiene | [`f01df41c8142fb8c…`](https://preprod.cardanoscan.io/transaction/f01df41c8142fb8cb7bfd675f33228fd51edb6199bc46bacab846e84bd91f9b0) |
-| 22 | `create-order` | §6 `CreateOrder` | [`f4ae3c114e843c54…`](https://preprod.cardanoscan.io/transaction/f4ae3c114e843c54093103683ff080c9a6453a216ca6eec6e1ecaf045f5a7314) |
-| 23 | `fill-sync` | §7.3 the synchronous fill | [`2458a12b74a0eb07…`](https://preprod.cardanoscan.io/transaction/2458a12b74a0eb077bc1b5aeb6008adfae0811dd6f5f582b862567c7fb491880) |
-| 24 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`377ac1b6932665ef…`](https://preprod.cardanoscan.io/transaction/377ac1b6932665ef662295f7e16486caa8ed36c99e58009d4835cae3eef65a08) |
-| 25 | `modify-position` | §16 `ModifyPosition` | [`6d5725b33804fbe0…`](https://preprod.cardanoscan.io/transaction/6d5725b33804fbe08c1451da036fb4301214d4c7e93b8f3b8869aba563ecd763) |
-| 26 | `sweep` | wallet hygiene | [`e2d88afdd4bd1700…`](https://preprod.cardanoscan.io/transaction/e2d88afdd4bd1700626c552466f832e9655656c77c66554edbf9e9c19bed29b4) |
-| 27 | `create-order` | §6 `CreateOrder` | [`5eb123566b05c1b9…`](https://preprod.cardanoscan.io/transaction/5eb123566b05c1b9b3b923e25d164e645f8f7b998ef0f6d6adbb19ab783b333e) |
-| 28 | `fill-sync` | §7.3 the synchronous fill | [`11d54b3852666e95…`](https://preprod.cardanoscan.io/transaction/11d54b3852666e9591db06f6bb045e6762f878255eed8469b742d80fbded9469) |
-| 29 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`291326abb842507d…`](https://preprod.cardanoscan.io/transaction/291326abb842507d083f63e1cc91f61a6ee02a4885f5d5c16a464113b24e8169) |
-| 30 | `modify-position` | §16 `ModifyPosition` | [`73a63ff2f1e9a389…`](https://preprod.cardanoscan.io/transaction/73a63ff2f1e9a389e565a6d7b8f036a66455559205d4b0f8f2fa744d5fc7d256) |
-| 31 | `sweep` | wallet hygiene | [`5a0789106a669705…`](https://preprod.cardanoscan.io/transaction/5a0789106a6697050507fee222a281046b88654e610bc994e04c8fad2a668f84) |
-| 32 | `take-profit` | §10.2.1, the take-profit close no one signed | [`9fb4d78150fcf98a…`](https://preprod.cardanoscan.io/transaction/9fb4d78150fcf98a2b261a24a71e311f177a39e46d36a9c3a095a857a36d458a) |
+| 1 | `genesis` | §14 genesis — the registry | [`4059a4e9a94499ad…`](https://preprod.cardanoscan.io/transaction/4059a4e9a94499adba4b1a6471859b94f34a02ddd13ea23f6d2c1755897e8bd7) |
+| 2 | `publish protocol_config` | §5 rule 4 — a reference script | [`2b687644d7921577…`](https://preprod.cardanoscan.io/transaction/2b687644d7921577c4ff6137713444239980b32d3611052a5b4f6077c4a582b1) |
+| 3 | `publish market_param` | §5 rule 4 — a reference script | [`db7276b5513720e7…`](https://preprod.cardanoscan.io/transaction/db7276b5513720e7a92871ce755aede2738280580a0ccb1bf4a6766cadff6ad7) |
+| 4 | `publish pool` | §5 rule 4 — a reference script | [`62d2757b3cfa83aa…`](https://preprod.cardanoscan.io/transaction/62d2757b3cfa83aa2d530e2874870a696b6990aaf56d5ab13dc960cb65c4184e) |
+| 5 | `publish loan` | §5 rule 4 — a reference script | [`ff4ce0e5d862d9b5…`](https://preprod.cardanoscan.io/transaction/ff4ce0e5d862d9b5a998b40e603179a88981f05c0a7021bea2bdf5f89d8226b3) |
+| 6 | `publish loan_repay` | §5 rule 4 — a reference script | [`6f684d421e588420…`](https://preprod.cardanoscan.io/transaction/6f684d421e588420b1308cf0e51939f231991a9da235fa0a5b09dd3ccc0726d0) |
+| 7 | `publish loan_close` | §5 rule 4 — a reference script | [`8b5a3767c93aa9f0…`](https://preprod.cardanoscan.io/transaction/8b5a3767c93aa9f0a295fe24a43ecdcb7a0904a4ef6bb14a59dc15fa52463dd4) |
+| 8 | `publish order` | §5 rule 4 — a reference script | [`054991203b3b457b…`](https://preprod.cardanoscan.io/transaction/054991203b3b457bad7c8f7731ddce9a8bab2448c177538005ff96b41b36d8f0) |
+| 9 | `publish position` | §5 rule 4 — a reference script | [`32fca2042218bd16…`](https://preprod.cardanoscan.io/transaction/32fca2042218bd165a6d9532c34945af5e3301286751016a5e4fb814b96349db) |
+| 10 | `publish cancel` | §5 rule 4 — a reference script | [`bab42f50cc0501ed…`](https://preprod.cardanoscan.io/transaction/bab42f50cc0501edb2c6c4fbb97fbf5a01d88e1a7b59c9fcf0e1bae4e9ae787b) |
+| 11 | `publish adapter_sync_generic` | §5 rule 4 — the venue adapter | [`da05c6b19f6f082a…`](https://preprod.cardanoscan.io/transaction/da05c6b19f6f082ab6bb382a5dc18d74976aa5ecea5d70435a7f48e13ec0b0f7) |
+| 12 | `publish adapter_minswap` | §5 rule 4 — the venue adapter | [`ff8766aca554dfc9…`](https://preprod.cardanoscan.io/transaction/ff8766aca554dfc9a0ec20d912f17e3d64f8ef9b4dfff779a62a39e0adbe52ce) |
+| 13 | `register 9 account(s)` | stake registration | [`ab5aa2539c68afbe…`](https://preprod.cardanoscan.io/transaction/ab5aa2539c68afbe4a40b23f3cf130631254dee54a67793da7b7bcd6d9cc2b3b) |
+| 14 | `update-adapters` | §14.2.6 `UpdateAdapters` | [`62b810fe43147c21…`](https://preprod.cardanoscan.io/transaction/62b810fe43147c212ea3dc4b89f5b9cb47cb2f6a17751af94d39abd58b783be3) |
+| 15 | `create-market` | §20 `CreateMarket` | [`4ee71d7bfc1bb3f0…`](https://preprod.cardanoscan.io/transaction/4ee71d7bfc1bb3f05211079b773b7dd50d4b3d3b2ffbe9a5be8b10d01129fb00) |
+| 16 | `supply` | §18 `TopupWithdraw`, deposit | [`c2cf3d327ed13e82…`](https://preprod.cardanoscan.io/transaction/c2cf3d327ed13e824c0019a9eb8b0cdd0e8d8e62a74b3e48fd6863b6771f145f) |
+| 17 | `create-market` | §20 `CreateMarket` | [`1a400bd84402d4f1…`](https://preprod.cardanoscan.io/transaction/1a400bd84402d4f1b3df7485f37edfa77d9942653032f5c77bb1701a4e8997b8) |
+| 18 | `supply` | §18 `TopupWithdraw`, deposit | [`cccbfb25b7cce1b1…`](https://preprod.cardanoscan.io/transaction/cccbfb25b7cce1b18115b2bf8b589d673074c4c2418f1beb7dfd6f1293dff2c2) |
+| 19 | `create-market` | §20 `CreateMarket` | [`48751d0e51ac64ea…`](https://preprod.cardanoscan.io/transaction/48751d0e51ac64eac7f9b447db5834c53efbb2c5dacd5c6f1d5cbe1ec094b5ec) |
+| 20 | `supply` | §18 `TopupWithdraw`, deposit | [`59588286c9e5b19f…`](https://preprod.cardanoscan.io/transaction/59588286c9e5b19f14443524aacc7a80abb51c67edab8aae93cef75cd926af25) |
+| 21 | `sweep` | wallet hygiene | [`58ea2e516497d565…`](https://preprod.cardanoscan.io/transaction/58ea2e516497d565146e7f8cca9bfd1f88631030af2826694f2da8c9d7632b56) |
+| 22 | `create-order` | §6 `CreateOrder` | [`a0e2352fc8f024eb…`](https://preprod.cardanoscan.io/transaction/a0e2352fc8f024eb1751656a0c2b48e50ad17756b3b12c652b0e45e3f255e0f7) |
+| 23 | `fill-sync` | §7.3 the synchronous fill | [`0e7a33f8e1e40fc9…`](https://preprod.cardanoscan.io/transaction/0e7a33f8e1e40fc9f6beaef1bdf9ef979233f773086f0b490b6d237876a2a937) |
+| 24 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`50aab4dacc7189b8…`](https://preprod.cardanoscan.io/transaction/50aab4dacc7189b8cbc6bc31a8f166685084dc4a845c4c3e20f4fcfffca55c0b) |
+| 25 | `modify-position` | §16 `ModifyPosition` | [`de000d3ad7a1dc14…`](https://preprod.cardanoscan.io/transaction/de000d3ad7a1dc14a9d7e27e01ac14011c25c143d54be1d30ced245d81109481) |
+| 26 | `sweep` | wallet hygiene | [`27f75c8b5b88e844…`](https://preprod.cardanoscan.io/transaction/27f75c8b5b88e84461e74fd756f3f9767e076cc15e9cab822e69406235a6f60d) |
+| 27 | `create-order` | §6 `CreateOrder` | [`549ee01c823eae12…`](https://preprod.cardanoscan.io/transaction/549ee01c823eae1208bb114a665742e5b398ad2b483d41c3d01f44f2ae5202f0) |
+| 28 | `fill-sync` | §7.3 the synchronous fill | [`7ffa065e0f2e7e87…`](https://preprod.cardanoscan.io/transaction/7ffa065e0f2e7e87bce1001648fd1335d78426e80996490d4c10aabf7d8b11e7) |
+| 29 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`f878b5228b6fe253…`](https://preprod.cardanoscan.io/transaction/f878b5228b6fe2530ae17fdb31ce828a9fc1c697ff408987c13050194dfe7520) |
+| 30 | `modify-position` | §16 `ModifyPosition` | [`15dda5cce9ee3ace…`](https://preprod.cardanoscan.io/transaction/15dda5cce9ee3acebdd4c6462b68fc200bae6400cef9fb69ca99aceffaf424c3) |
+| 31 | `sweep` | wallet hygiene | [`ad6092a7a8266536…`](https://preprod.cardanoscan.io/transaction/ad6092a7a8266536cac459c4949763e358c2fc7970ebbd02faba68c89e112128) |
+| 32 | `create-order` | §6 `CreateOrder` | [`18059a8d58539d42…`](https://preprod.cardanoscan.io/transaction/18059a8d58539d42ca86f7fd4b128a5e251780715fb6c51b43a556464e1c4058) |
+| 33 | `fill-sync` | §7.3 the synchronous fill | [`3cf5affc415cc2d0…`](https://preprod.cardanoscan.io/transaction/3cf5affc415cc2d0e5d705a9688836bed5dca832e854f963a2e29274e4e21066) |
+| 34 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`8c96ae00024b44e5…`](https://preprod.cardanoscan.io/transaction/8c96ae00024b44e520fde049e1faafb5970f46f0dce586898b06793f1fb0adae) |
+| 35 | `modify-position` | §16 `ModifyPosition` | [`da03548386e1ff37…`](https://preprod.cardanoscan.io/transaction/da03548386e1ff3774296ffc87cd60cc50d59d557bcaeba350b8f9edb81005a7) |
+| 36 | `sweep` | wallet hygiene | [`552acdc5d9b5a533…`](https://preprod.cardanoscan.io/transaction/552acdc5d9b5a533dfb944d6fb91d5418d521ae25c5500cf04a7f383066bb0d6) |
+| 37 | `take-profit` | §10.2.1 closed by a standing instruction, with no owner input | [`0f4d7ef193509eeb…`](https://preprod.cardanoscan.io/transaction/0f4d7ef193509eeb0f0bdabfdf120e7106674124cd306983c4b7899e1f080e09) |
+| 38 | `create-order` | §6 `CreateOrder` | [`568f4081cd9c8f81…`](https://preprod.cardanoscan.io/transaction/568f4081cd9c8f81c318738315efd469ef549744581454820349a17cef434830) |
+| 39 | `fill-minswap` | §7.2 the asynchronous fill | [`a95cad9daf5e4639…`](https://preprod.cardanoscan.io/transaction/a95cad9daf5e463920f52630cfb20eacb2dc7b1a5f980cf16621fbef964f4f17) |
+| 40 | `create-order` | §6 `CreateOrder` | [`975c6913e48992e5…`](https://preprod.cardanoscan.io/transaction/975c6913e48992e5b7bd7974291426406ff0a439e6e91bcffad9d152aa991320) |
+| 41 | `fill-minswap` | §7.2 the asynchronous fill | [`473c398f0b79ffb0…`](https://preprod.cardanoscan.io/transaction/473c398f0b79ffb05fd1efa78d4782f2d8093021adb23a82e9ebea86f3890eb0) |
+| 42 | `borrow-async` | §7.6.7 `OpenDirect` with a claim | [`d48f90fd228f7048…`](https://preprod.cardanoscan.io/transaction/d48f90fd228f70484336a1c11353bf80e8cbdbab480163f9a99171bdf90db64f) |
+| 43 | `redeem` | §18 `TopupWithdraw`, withdrawal | [`f2df98b2effa77b4…`](https://preprod.cardanoscan.io/transaction/f2df98b2effa77b410b6a9227c4e077e482f74fe31d4e9619d10ef269be9e8c5) |
+| 44 | `borrow` | §7.6 `OpenDirect` | [`da659498888c5704…`](https://preprod.cardanoscan.io/transaction/da659498888c57047283a2524c98ad521b859de66f7d125615cd967a18e1fa05) |
+| 45 | `repay` | §10.1 `RepayLoan` on a synchronous venue | [`fc7f81855cabfaef…`](https://preprod.cardanoscan.io/transaction/fc7f81855cabfaef5ab302b5ae4e5ea44dc445691a1de67d73fd64b3ddcd2df4) |
+| 46 | `sweep` | wallet hygiene | [`bb0a288944a90d10…`](https://preprod.cardanoscan.io/transaction/bb0a288944a90d10fc9fc017df88754b9e5d4b7db341498a37ab01363f0be868) |
+| 47 | `create-order` | §6 `CreateOrder` | [`4c87d7d7c7d03493…`](https://preprod.cardanoscan.io/transaction/4c87d7d7c7d0349311ed2fe748f4cf5d8dd91a175be227befdf3f21d65c4b950) |
+| 48 | `rollback` | §4.3 the claim the venue returned | [`14e063690a04d8b3…`](https://preprod.cardanoscan.io/transaction/14e063690a04d8b359b8c36ad98145422632002d129d3d8a65390e69d8c1491b) |
+| 49 | `collect-remain` | §13.3 `CollectRemain` | [`b01b84b4d3e2ad59…`](https://preprod.cardanoscan.io/transaction/b01b84b4d3e2ad594f43929c3ba736e3b8176869f6d942d09160b788549f09e7) |
+| 50 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`4d6d05b6ba8532a5…`](https://preprod.cardanoscan.io/transaction/4d6d05b6ba8532a5491464f2e99e8786284ee53c968a03e9203dec40f556e878) |
+| 51 | `rollback` | §4.3 the claim the venue returned | [`a459dfc728cbe504…`](https://preprod.cardanoscan.io/transaction/a459dfc728cbe504e35e99aa016a6a2ee4c507db530fc83b81be691072a111f7) |
+| 52 | `collect-remain` | §13.3 `CollectRemain` | [`fd752d73e7f6fd05…`](https://preprod.cardanoscan.io/transaction/fd752d73e7f6fd052db1ea35b3757580e8606c87a5fbdc0790a31dce77e29355) |
+| 53 | `create-order` | §6 `CreateOrder` | [`2a3999e8bbab72f0…`](https://preprod.cardanoscan.io/transaction/2a3999e8bbab72f062af6ab6a5b9ae8b3d5884dbcc19ef6fdcdf930750d8e4b4) |
+| 54 | `fill-sync` | §7.3 the synchronous fill | [`4d6c0c6673551605…`](https://preprod.cardanoscan.io/transaction/4d6c0c6673551605599f6f082232476f6819a771037827268b3a1beafd52ece9) |
+| 55 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`5384a9b481c9576e…`](https://preprod.cardanoscan.io/transaction/5384a9b481c9576e350a3b2733c92961687d484a5ef6a0982ecd76c1aea4696f) |
+| 56 | `close-async` | §10.2.1 the sell claim | [`6c35f17bd17bab1b…`](https://preprod.cardanoscan.io/transaction/6c35f17bd17bab1bb69dc5050463b23ac6a2e48715c4bcddf4937d70d9cdba47) |
+| 57 | `tidy` | wallet hygiene | [`2e7dd0522b447b56…`](https://preprod.cardanoscan.io/transaction/2e7dd0522b447b56ca437a71a061b4eaa98fd39105ded23e8728dda454398c70) |
+| 58 | `update-market-param` | §15 `UpdateMarketParam` | [`5fdd4f52acd0fc75…`](https://preprod.cardanoscan.io/transaction/5fdd4f52acd0fc755e4f93bc5050f2e71f5b0aa4f12d4438b504efb2797939e0) |
+| 59 | `withdraw-fee` | §19 `WithdrawFee` | [`1be298df3a15689b…`](https://preprod.cardanoscan.io/transaction/1be298df3a15689b17f8c07b930777f743531901caa086d28bf60db3573c878e) |
+| 60 | `borrow` | §7.6 `OpenDirect` | [`6c9fddc74dcb5eeb…`](https://preprod.cardanoscan.io/transaction/6c9fddc74dcb5eeb6e6906872f78a46cbe3d19ab5c59377095d17f45b7a8c441) |
+| 61 | `liquidate` | §11 `Liquidate` | [`6eb853e822306d62…`](https://preprod.cardanoscan.io/transaction/6eb853e822306d62547fa833e43429403561b89b8e9388a0e49d8592c203fb40) |
+| 62 | `collect-remain` | §13.3 `CollectRemain` | [`dcf192b3aae2e406…`](https://preprod.cardanoscan.io/transaction/dcf192b3aae2e406ea48ff105c2f005149d1c26af6391eb6417f7807d12e61ca) |
 
 ## 4. How each transaction is shaped
 
-Eight of the subsections below describe arms this deployment did **not** exercise
-— 4.7, 4.8, 4.9, 4.13, 4.14, 4.18, 4.19 and 4.20, every one of them downstream of
-a price. Their shapes are unchanged and worth reading; what is missing is a hash
-of this deployment beside them. §5 is the reason, and the transaction links inside
-those eight belong to the previous release, whose registry no longer exists.
+Three of the subsections below describe arms this deployment did **not** exercise
+— 4.8, 4.9 and 4.19, each of them downstream of a venue order actually filling,
+and 4.21 ran only its second half. Their shapes are unchanged and worth reading;
+what is missing is a hash of this deployment beside them, and the links inside
+them belong to an earlier release whose registry no longer exists.
 
 Conventions used throughout:
 
@@ -478,8 +508,9 @@ fee output may hold only lovelace and the supply token.
 | outputs | 0 the position |
 | redeemer | action `Constr(2, [position_in_idx, position_owner_in_idx, position_out_idx])` |
 
-Only `take_profit_price` and `min_execution_amount` may move, and the latter only
-upward. The value is byte-identical, which is what keeps the `LoanOwnerNFT`
+Only `take_profit_price`, `stop_loss_price` and `min_execution_amount` may move,
+and the last only upward. Both standing instructions are checked for
+`numerator >= 0` and `denominator > 0`; `0/1` writes the instruction off. The value is byte-identical, which is what keeps the `LoanOwnerNFT`
 pairing intact, and no input may sit at `loan_skh` or `pool_skh`.
 
 ### 4.17 `UpdateMarketParam` — §15
@@ -555,13 +586,14 @@ by the same stranger who placed it. Nothing is at risk in doing so: `q >= floor`
 is checked here, and the remain UTxO is addressed to the position's
 `beneficiary`, so a settler cannot divert the proceeds — only earn the tip.
 
-### 4.20 Take-profit — §10.2.1 with no owner input
+### 4.20 Closed by a standing instruction — §10.2.1 with no owner input
 
-**The one to copy:** [`1d62ef9edf67579d…`](https://preprod.cardanoscan.io/transaction/1d62ef9edf67579da4256446c3be907304377f682a26d3997a62eb79e3c3583e), settled by
-[`300ad1970fea5038…`](https://preprod.cardanoscan.io/transaction/300ad1970fea50389facd1bc4c756736ec9b6a1329137f5c8ac75a5f42a614c5) and swept by [`d55972bbe88e5169…`](https://preprod.cardanoscan.io/transaction/d55972bbe88e5169b9b628e4ab161f1debe4651d617e43937da0bd796e392dbf). Neither
-of the first two carries a `PositionOwnerNFT` in any input. For contrast, the same
-arm taken by the trader is [`4dbda380c2721bf2…`](https://preprod.cardanoscan.io/transaction/4dbda380c2721bf27d85e63a62492713b13a1a4088d7999c29b73bcb799140ea), where
-the ticket is named.
+**The one to copy:** [`0f4d7ef193509eeb…`](https://preprod.cardanoscan.io/transaction/0f4d7ef193509eeb0f0bdabfdf120e7106674124cd306983c4b7899e1f080e09),
+which the **stop-loss** authorised: no input carries a `PositionOwnerNFT`, the
+take-profit was not reached, and the redeemer names no owner index. The position
+it closed was given both instructions by
+[`da03548386e1ff37…`](https://preprod.cardanoscan.io/transaction/da03548386e1ff3774296ffc87cd60cc50d59d557bcaeba350b8f9edb81005a7).
+The take-profit side of the same gate ran on the registry before this one.
 
 The same transaction as §4.18, built by someone who does not hold the ticket. The
 difference is one index and one gate:
@@ -570,7 +602,7 @@ difference is one index and one gate:
 |---|---|
 | redeemer | `position_owner_in_idx = -1` — §5 rule 11a's absent index |
 | inputs | loan, position, funding. **No `PositionOwnerNFT`** |
-| gate | `take_profit_price.numerator > 0`, and the oracle's rate for the long leg has reached it |
+| gate | one of the two standing instructions is set and reached: `take_profit_price.numerator > 0` with the oracle's rate for the long leg at or above it, or `stop_loss_price.numerator > 0` with the rate at or below it |
 
 Everything else — the floor, the venue order, the claim, the health gate — is
 byte-for-byte the arm above, which is the point: what the venue sees cannot tell
@@ -578,19 +610,25 @@ the two apart, so a take-profit needs no separate settlement path.
 
 ```
 price = oracle rate for long_token, quoted in short_token per unit
-fires when  price.num * tp.den >= tp.num * price.den
+take-profit fires when  price.num * tp.den >= tp.num * price.den
+stop-loss   fires when  price.num * sl.den <= sl.num * price.den
 ```
+
+The two face opposite directions and both are inclusive at the stated price. A
+stop-loss is an exit **above** the liquidation threshold: §4.1's floor still has
+to clear `health_floor` at `debt_at_expiry`, so it never substitutes for §11.
 
 Cross-multiplied rather than divided, because a division would round where the
 validator does not. **`take_profit_price` is quoted the way the oracle quotes —
 supply token per unit of the long leg — which is the opposite orientation to
 `open_limit_price`**, whose §7.4.2 use is `sold * denominator / numerator` and so
 states long per short. An opening bound on what is paid, against a closing bound
-on what is received. `numerator == 0` is the sentinel §6.2.2 leaves room for: a
-position with no take-profit standing, which no price can reach.
+on what is received. `numerator == 0` is the sentinel §6.2.2 leaves room for, and it reads the same on
+both sides: no price is at or below zero either, so `0/1` is a position with that
+instruction unset.
 
-The gate was exercised in all three states against the same live oracle rate of
-`523221885148/159562448003` — about 3.279 ADA per fUSDM:
+The take-profit side was exercised in all three states against a live oracle rate
+of `523221885148/159562448003` — about 3.279 ADA per fUSDM:
 
 | `take_profit_price` | | Result |
 |---|---|---|
@@ -601,8 +639,16 @@ The gate was exercised in all three states against the same live oracle rate of
 Both rejections come from the `loan_repay` withdrawal, which is where the gate
 lives; nothing else about the transaction changed between them.
 
+The stop-loss side was isolated the same way, at an oracle rate of
+`3105273981850/5452582673` — about 569.5 fUSDM per fBTC — with the take-profit set
+where no price reaches it, so only the stop-loss could admit the close:
+
+| `take_profit_price` | `stop_loss_price` | Result |
+|---|---|---|
+| `1000000/1` — not reached | `999999/1` — reached | **accepted** |
+
 One trap for whoever automates this, and [`2b976d32ba9184c4…`](https://preprod.cardanoscan.io/transaction/2b976d32ba9184c4a211787ef916222a19db90dd505f191555ded3c1aabcf40c)
-is what it looks like. `--cancel-order` releases the
+on an earlier registry is what it looks like. `--cancel-order` releases the
 `PositionOwnerNFT` into the wallet's token bag, and the leanest UTxO is that bag,
 so a take-profit funded from it **carries the ticket in an input the redeemer
 never names**. The transaction is valid and the validator never reads it — but on
@@ -724,11 +770,12 @@ way. `adapter_minswap` moved 8 351 → 8 381 bytes compiled; it is whitelisted
 through §14.2.6 rather than named in the registry, so this needed
 `--publish-changed`, `--update-adapters` and `--register-stake` — not a genesis.
 
-The three transactions, in order:
+The three transactions, in order. Only the first ran on this registry; the other
+two are from an earlier release, since no venue order posted here was filled:
 
 | | | Transaction |
 |---|---|---|
-| the borrower opens and places the swap | one transaction | [`1b8fec515b4d…`](https://preprod.cardanoscan.io/transaction/1b8fec515b4d660207b74ccf5c03a2cdcbdc5c01c5278f4e6c9d4eb297fe65b8) |
+| the borrower opens and places the swap | one transaction | [`d48f90fd228f…`](https://preprod.cardanoscan.io/transaction/d48f90fd228f70484336a1c11353bf80e8cbdbab480163f9a99171bdf90db64f) |
 | the venue's own batcher fills it | 220 737 fBTC against a floor of 214 114 | `0d45b8c549d0…#0` |
 | §8 settles the payout into the loan | permissionless | [`46ec9b2cd8bb…`](https://preprod.cardanoscan.io/transaction/46ec9b2cd8bb248decc80f246947a4a41ffac8050838a04e4bbccdd47688bb5f) |
 
@@ -736,9 +783,9 @@ The three transactions, in order:
 
 ## 5. The price, and the arms that wait on it
 
-Nine arms read a price, and every one of them was rejected before it was
-accepted. All four causes were in this repository, and three of them are
-invisible from the error the node returns.
+Every arm that reads a price was rejected before it was accepted. All four causes
+were in this repository, and three of them are invisible from the error the node
+returns.
 
 The oracle recomputes the rate from the reference input the redeemer cites and
 checks it with `expect price == price_in_rdmr` — a structural equality on
@@ -764,40 +811,24 @@ fill trades against **is** the pool the oracle reads the rate from, so the
 reference list named one UTxO twice. The ledger dedupes; the list the indices
 were taken over did not, and every index past the repeat was one too high.
 
-With all four fixed, every price-reading arm ran against the fUSDM market — the
-pair whose oracle path is maintained. **The table below is registry `7e97f3dd`**,
-the one before this: §10.2.1 dropping the freshness bound moved `loan_repay`, so
-this registry carries only the transactions §3 lists — the take-profit among them,
-which is the arm that read the bound.
+With all four fixed, every price-reading arm builds and submits. The ones this
+registry ran are in §3 — §7.2, §7.6, §7.6.7, §10.2.1 with and without the owner
+ticket, §11, §13.3 and §16 among them. What a price cannot supply is a
+counterparty: §7.5, §8 and §10.2.2 each need a venue order to have filled, and on
+preprod none did.
 
-| Arm | | Transaction |
-|---|---|---|
-| §7.6.7 `OpenDirect` with a claim | one transaction opens and places the swap | [`1b8fec515b4d…`](https://preprod.cardanoscan.io/transaction/1b8fec515b4d660207b74ccf5c03a2cdcbdc5c01c5278f4e6c9d4eb297fe65b8) |
-| §7.2 with §7.4 | the asynchronous fill | [`2b7ee2e6d68d…`](https://preprod.cardanoscan.io/transaction/2b7ee2e6d68d8d7fcc134c8b828e719c2ca0d9b74896a96da042cc6bfd9aa931) |
-| §8 `SettleClaim` |  | [`28ee6fa1b722…`](https://preprod.cardanoscan.io/transaction/28ee6fa1b722e793499716762e702c90e62b676e4b33754003322f90f30f864c) |
-| §7.6 `OpenDirect` | collateral already held | [`83cc29d95dcb…`](https://preprod.cardanoscan.io/transaction/83cc29d95dcbf1ffbb97f2275e14cbcc0f6af62f9288cccd33cd4a77c2762017) |
-| §7.6 at the health boundary | opened with the headroom the index would eat | [`cc071be7937a…`](https://preprod.cardanoscan.io/transaction/cc071be7937affc3b3089aba7aae6a4787685619edaaa9d2c579de85dd299746) |
-| §11 `Liquidate` | once the index had eaten it | [`cda16a79e790…`](https://preprod.cardanoscan.io/transaction/cda16a79e7900c14e168952c7c35b30a6749138e08a93023e02c7ee95c26341d) |
-| §13.3 `CollectRemain` |  | [`f26d594d0d42…`](https://preprod.cardanoscan.io/transaction/f26d594d0d4287669319fb90f3e50df0f29f8086b94b626aea0153bba2e868da) |
-| §16 `ModifyPosition` |  | [`0220ae2d43e9…`](https://preprod.cardanoscan.io/transaction/0220ae2d43e9fcb8cab63563dac0481b74a550f1a0d1c7a0bea7935d86a83853) |
-| §10.2.1 the sell claim |  | [`261421ceaf98…`](https://preprod.cardanoscan.io/transaction/261421ceaf98b42e235bed1ebc46927b37359ac39a76213fa55f50b4721411fe) |
-| §10.2.1 take-profit | no owner input — a stranger closed it on the oracle's word | [`ecc7436afbb9…`](https://preprod.cardanoscan.io/transaction/ecc7436afbb9069016436c082011a1c60afb25c4c3f398bcdff501035b5c844a) |
-| §10.2.2 repay on fill |  | [`70e4aa6c15d9…`](https://preprod.cardanoscan.io/transaction/70e4aa6c15d9badc56658010daf9be937faeb0ac99b7355cb723d3db6e78c749) |
+### §10.2.2 on a market that lends a token
 
-### §10.2.2, and why this registry exists at all
-
-Proving §10.2.1 exposed a contract bug that only a token-supply market can hit.
+Only a token-supply market can hit this, and §10.2.1 is what exposes it.
 §10.2.2.6 requires the remain UTxO to carry over every asset the payout held, and
 `carries_over` skips lovelace — so on a market that lends ADA the venue's proceeds
 were never in its domain, and `net(remain, short_token) >= q - debt_repaid`
 governed them alone. Where the supply token is a token they fall under both at
 once and the two disagree by exactly `debt_repaid`: the remain was required to
 hold the whole payout while the pool was required to be paid out of it. §10.2.2
-could not be built on such a market at all. The sold leg is now excluded from the
-payout's carry-over, `loan_repay` moved 13 043 → 13 050 bytes as compiled
-(13 123 once the `ProtocolNFT` is applied, which is the size §1 lists), and since
-`loan_repay_skh` is one of the registry's immutable fields this registry is what
-that fix required.
+could not be built on such a market at all. The sold leg is excluded from the
+payout's carry-over, so the market that lends fUSDM closes through §10.2.1 and
+§10.2.2 like any other.
 
 ## 6. What an implementer has to get right
 
@@ -932,47 +963,49 @@ Each of these cost a rejected transaction here.
     stranded on chain with the debt still counted in `total_borrow`. Pay the
     venue order's value across verbatim.
 
+23. **A datum that gains a field moves every positional index that reads it.**
+    Off-chain code reads a datum by position, so inserting `stop_loss_price` at
+    field 2 of `PositionDatum` shifted `min_execution_amount`, `max_slippage` and
+    `beneficiary` down one. The two failure modes differ: reading `beneficiary`
+    one slot early yields a value of the wrong **type** and the builder throws,
+    while reading `max_slippage` one slot early yields another Int — 101 000 000
+    where 300 was meant — and the transaction builds, then dies inside the
+    adapter, which recomputes the market floor from it and disagrees. Grep every
+    positional read of that datum across the whole builder when a field is added;
+    a compiler that types the field as `any` will not.
+
 ---
 
 ## 7. Where it ended
-
-**Registry `7e97f3dd`, the one before this.** The numbers below were read after
-its last transaction. This registry has three fresh pools — 800 ADA, 200,000,000
-fUSDM, 1 fBTC — and only the transactions §3 lists; the sample set was not re-run,
-since the one validator that moved was `loan_repay` and §10.2.1 is what exercises
-it. That arm ran here: [`9fb4d781…`](https://preprod.cardanoscan.io/transaction/9fb4d78150fcf98a2b261a24a71e311f177a39e46d36a9c3a095a857a36d458a).
 
 Read back off chain after the last transaction:
 
 | | |
 |---|---|
-| ADA pool | 806.500031 ADA · `total_supply` 800.000024, `total_borrow` **0**, `undistributed_fee` 1.500007, `bad_debt` **0** |
-| fUSDM pool | 5 ADA + 199,996,998.185483 fUSDM · `total_supply` 200,000,000.028351, `total_borrow` 3,003.347883, `undistributed_fee` 1.503933, `bad_debt` **0** |
-| fBTC pool | 5 ADA + 1 fBTC · `total_supply` 100,000,000, `total_borrow` **0**, `undistributed_fee` 0, `bad_debt` **0** |
-| Loans | three open, all three carrying no claim, with three positions to match. One §13.2 remain UTxO is still unswept |
-| Orders | **none** — every order this registry posted was filled or cancelled |
+| ADA pool | 405.000131 ADA · `total_supply` 700.006499, `total_borrow` 300.006368, `undistributed_fee` 0, `bad_debt` **0** |
+| fUSDM pool | 5 ADA + 208,999,557.511655 fUSDM · `total_supply` 209,000,000.002996, `total_borrow` 450.003398, `undistributed_fee` 7.511841, `bad_debt` **0** |
+| fBTC pool | 5 ADA + 1,607.69230789 fBTC · `total_supply` 1,607.69230789, `total_borrow` 0, `undistributed_fee` 0, `bad_debt` **0** |
+| Loans | five open — two carrying no claim, one an `Opening` claim, two a `Closing` claim |
+| Orders | two open |
+| At the loan script besides the loans | three venue payouts the venue returned at expiry, each holding its `BindingNFT` and no datum |
 | Reference scripts | all 11 reproduce from this source — `--verify` rebuilds each from `plutus.json` and matches the record |
 
-Ten loans were opened — five through §7.3, two through §7.2, two through §7.6 and
-one through §7.6.7 — and seven were closed, by every closing route the spec has:
+Nine loans were opened — four through §7.3, two through §7.2, two through §7.6 and
+one through §7.6.7 — and four were closed:
 
 | Route | | Times |
 |---|---|---:|
-| Repaid, no venue | §10.1 | 3 |
-| Repaid out of a venue fill | §10.2.2 | 2 |
+| Repaid, no venue | §10.1 | 1 |
+| Repaid out of a venue fill | §10.2.2 | 0 |
 | Liquidated | §11 | 1 |
-| Rolled back after an unfilled claim | §12.3 | 1 |
+| Rolled back after an unfilled claim | §12.3 | 2 |
 
-The two §10.2.2 are worth separating: one settled a claim `--close-async` placed,
-the other one that **take-profit** placed, and the second is what proves the
-record change in §6 item 20. Before it, the arm had to be handed its loan by
-hand, because two `Closing` claims were outstanding and the record could name
-only one. After it, `--settle-close` found the loan itself and read the claim's
-floor, sold leg and expiry off that loan's own datum.
+`bad_debt` of **0** on all three pools is what says those four closures landed
+whole, the two §12.3 included — each recovered leg covered its debt exactly.
 
-`bad_debt` of **0** on all three pools is what says the seven closures landed
-whole, the §12.3 included — its recovered leg covered its debt exactly. The three
-loans still open carry no claim and can be closed by either route whenever.
+Both §12 arms are in the contract: §12.3 unwinds an `Opening` claim and §12.4 a
+`Closing` one. `releases/` implements only the first, so the two loans holding a
+returned `Closing` claim have no command to unwind them yet.
 
 ---
 

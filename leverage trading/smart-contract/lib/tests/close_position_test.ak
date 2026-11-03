@@ -68,6 +68,7 @@ fn t_position() -> PositionDatum {
   PositionDatum {
     long_token: ("usdm_pid", "usdm"),
     take_profit_price: PRational(2, 1),
+    stop_loss_price: PRational(0, 1),
     min_execution_amount: 100_000_000,
     max_slippage: 300,
     beneficiary: t_wallet(),
