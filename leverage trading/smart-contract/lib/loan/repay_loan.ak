@@ -311,8 +311,6 @@ fn place_sell_claim(
       pool_skh,
       config_pool_skh,
       market_nft_name,
-      market.max_index_staleness,
-      tx_start,
     )
   let PoolDatum { borrow_apy, interest_time, interest_index, .. } = pool
   let index =

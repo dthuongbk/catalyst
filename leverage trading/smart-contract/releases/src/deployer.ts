@@ -3103,9 +3103,12 @@ export class Deployer {
   async closeAsync(takeProfit = false): Promise<void> {
     const record = `${OUT_FOLDER}/${NETWORK.toLowerCase()}.json`;
     const rec = await Bun.file(record).json();
-    // §10.2.1 closes any loan that carries no claim, however it was opened.
+    // §10.2.1 closes any loan that carries no claim, however it was opened, and
+    // `liveLoan` is what says which one. The arm used to require §8 to have run
+    // first — a leftover from when the only loan it could reach came from an
+    // asynchronous fill, and a precondition on the record rather than on the
+    // chain: a synchronously filled loan closes here just as well.
     const target = await this.liveLoan(rec, Deployer.unclaimed);
-    if (!target || !rec.settle) throw new Error("no settled async loan recorded");
     const nft: TupleAsset = [rec.protocolNft.policyId, rec.protocolNft.assetName];
     const v = ours();
     const venue = minswapV2For(NETWORK);

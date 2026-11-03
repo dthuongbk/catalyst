@@ -31,10 +31,10 @@ in §1 is unaffected and this registry stays the one in use.
 | | |
 |---|---|
 | Network | Preprod |
-| ProtocolNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.70f48d8dedd769ada7c44fdb4774b6c1c07d748bdc042ee5b955636080fea212` |
-| AdminNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.459e8ad7efb9369a7fffab114adf7d37f7a9e0a6864b7baeb0165901d4f2dffd` |
-| `protocol_config` UTxO | at `addr_test1wqex8q3mzs62tk3dd79tjdpul4sunmunhtyk23yyn9z35as7099cg` |
-| Genesis | [`7e97f3dd5014796c…`](https://preprod.cardanoscan.io/transaction/7e97f3dd5014796cb7f17bc334ac0f4f7e3acb2562e1e2644cf0b0a8a18424ce) |
+| ProtocolNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.bb97dfdc793e6184199bda059bb49c9bac57f533fa73a1f73d4f2c6e41429fe1` |
+| AdminNFT | `bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14.47b7d21f8bb67cf1c6a5ded9623a553b087045955aa525d397bc37a7079cd420` |
+| `protocol_config` UTxO | at `addr_test1wp3npccjwvnkuxzly5w6ntyglhad3mhaeh5ea9h4fzqjm0glkedh3` |
+| Genesis | [`7e291ad34a25ded0…`](https://preprod.cardanoscan.io/transaction/7e291ad34a25ded08f2dc0e9b74b61add19899abcd19590e986a110369cd8983) |
 | Reference scripts held at | `addr_test1qqv5l5k8zax8agy84qanqr44tr4padeescstfh9pexxktapdzjk7wvmnvwrgara7yay07vnhh78chyvla8yeuw5ltxysx2qgkv` |
 | Oracle (`oracle_skh`) | `3158c9a7ba551eb3b6b9aa578e7995dec5ce34e272fde0bda76b46d1` |
 
@@ -42,25 +42,25 @@ in §1 is unaffected and this registry stays the one in use.
 
 | Validator | Script hash | Bytes |
 |---|---|---:|
-| `adapter_minswap` | `e25c70a0a4d1395315ed4066da4391511e17092617adb1b48ffc391b` | 8,558 |
-| `adapter_sync_generic` | `3fbf5841a1f19dd7d525236712f7d75e406927d70b5e71e5ac9969b3` | 3,326 |
-| `cancel` | `d2a000949ab15fa90dc12dc29d75c02b86778fecc444b0542c35b392` | 2,710 |
-| `loan` | `6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4` | 14,556 |
-| `loan_close` | `e52dfbe9ecbe7a621fae8f6d0540df9086924d4b9a5650d89aab595b` | 14,261 |
-| `loan_repay` | `01ab270ea1a08e4f4d9c0e3cea0976139f9f8b0a0e23552848e31d2a` | 13,123 |
-| `market_param` | `1858b5e3a3722348e1334fa3226edc8ef179a17571b0ced4ff08ec9a` | 6,115 |
-| `order` | `19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d` | 13,214 |
-| `pool` | `e20d719a11624989cba3ff7512924d565b2e6887c8b62f55e2da615c` | 12,566 |
-| `position` | `30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b` | 6,947 |
-| `protocol_config` | `3263823b1434a5da2d6f8ab9343cfd61c9ef93bac965448499451a76` | 4,029 |
+| `adapter_minswap` | `1b47e92b2a5d5ade45c756f09ba8a63ddc2ee53f2e8f03ed1594d2ee` | 8,558 |
+| `adapter_sync_generic` | `ca9cc341090f804f12ddb37066fc024ebb1513eabb9998e831edfdcd` | 3,326 |
+| `cancel` | `13d34e0048fb09a427ac2748e7ef0eb724236f6c3dd00fc48390614c` | 2,710 |
+| `loan` | `136036f18ed7c7375b7dcdc62e3966e18c56b5bd82edcdcc9f1b83b9` | 14,556 |
+| `loan_close` | `0e369bc8a7ed6294934e369dfffcf3bf11552a45c93cb80a44ed7be0` | 14,261 |
+| `loan_repay` | `b4537ed87606774e13a7afd3418c19ed40a5173573c4b18da329e7b6` | 12,987 |
+| `market_param` | `015edc41870a84291e1f51bf335aad791a0e4acbe1f478837519a9dd` | 6,115 |
+| `order` | `f0ec5f77926524f8e379c4867fbcc12ce7fb0dca9b7eec3ba8448ee6` | 13,214 |
+| `pool` | `96c6f792d1ebbcddf64793d3f735c79234fecc846cb4c09f61f5994d` | 12,566 |
+| `position` | `11fa0de8aff084ee8a48afe0c027883a9864baa1a1c8a8969451d69f` | 6,947 |
+| `protocol_config` | `6330e31273276e185f251da9ac88fdfad8eefdcde99e96f548812dbd` | 4,029 |
 
 ### Markets
 
 | Key | Lends | Collateral | MarketNFT |
 |---|---|---|---|
-| `market` | ADA | fUSDM | `3cf2d4ad7f6e90b0b200d083…` |
-| `marketFusdm` | fUSDM | fBTC | `d244f30ddfb30e2bee8b85fb…` |
-| `marketFbtc` | fBTC | fUSDM | `d41cb093d0cc0e9c21f4adb0…` |
+| `market` | ADA | fUSDM | `967dcbbe51fdec736cbc2fef…` |
+| `marketFusdm` | fUSDM | fBTC | `5e3aa5e0086f87e4471e5619…` |
+| `marketFbtc` | fBTC | fUSDM | `8909a85c65a7674a1f2642da…` |
 
 ## 2. Parameters
 
@@ -102,93 +102,44 @@ decimals on chain, which no datum carries today.
 
 ## 3. Every transaction, in the order it ran
 
-Eighty-one transactions, every one of them on this registry. `sweep`, `tidy` and
+Thirty-two transactions, every one of them on this registry. `sweep`, `tidy` and
 `consolidate` are wallet hygiene rather than arms of the spec — they are listed
 because they were submitted, not because they prove anything.
 
 | # | Command | What it proves | Transaction |
 |---:|---|---|---|
-| 1 | `genesis` | §14 genesis — the registry | [`7e97f3dd5014796c…`](https://preprod.cardanoscan.io/transaction/7e97f3dd5014796cb7f17bc334ac0f4f7e3acb2562e1e2644cf0b0a8a18424ce) |
-| 2 | `publish protocol_config` | §5 rule 4 — a reference script | [`2844229dbeb9feb8…`](https://preprod.cardanoscan.io/transaction/2844229dbeb9feb8f46402d1fcd5f165e48c4f7bb3d2a28b0ec765da85000952) |
-| 3 | `publish market_param` | §5 rule 4 — a reference script | [`cf1b0a305acb82ab…`](https://preprod.cardanoscan.io/transaction/cf1b0a305acb82abca7c90a0f3d990f533a4398de50e65c4b8a345f9ffc5d6c4) |
-| 4 | `publish pool` | §5 rule 4 — a reference script | [`7859839e0c98e6ed…`](https://preprod.cardanoscan.io/transaction/7859839e0c98e6ed734e8b650d630bef3fcc6632b9ecb873267ee6b86c1891aa) |
-| 5 | `publish loan` | §5 rule 4 — a reference script | [`27c561c66579193b…`](https://preprod.cardanoscan.io/transaction/27c561c66579193b4be89dae4a70ca51caaa31f911355262b8d8ab5778501e19) |
-| 6 | `publish loan_repay` | §5 rule 4 — a reference script | [`76b48c28d3944967…`](https://preprod.cardanoscan.io/transaction/76b48c28d3944967e7fecfd3295801940a7ac649d39a55c1b0ac6f61d04a2b72) |
-| 7 | `publish loan_close` | §5 rule 4 — a reference script | [`593c9d93d05682f3…`](https://preprod.cardanoscan.io/transaction/593c9d93d05682f343e674a5b1afc3f0918b4bba8b209b4ab33a1a3645264637) |
-| 8 | `publish order` | §5 rule 4 — a reference script | [`597566d0194c68ac…`](https://preprod.cardanoscan.io/transaction/597566d0194c68ac2c56b9b797e0adf1c08b13d410a4a1de0ba429d2405fbd61) |
-| 9 | `publish position` | §5 rule 4 — a reference script | [`092b18ba1756617e…`](https://preprod.cardanoscan.io/transaction/092b18ba1756617e2a1418a8ef9d3e6d731749ec992139320378d7fb2915b9cb) |
-| 10 | `publish cancel` | §5 rule 4 — a reference script | [`005988ce0c233dbe…`](https://preprod.cardanoscan.io/transaction/005988ce0c233dbedca622a30886583d98e7634585ac53ba19b9c438e8fc3071) |
-| 11 | `publish adapter_sync_generic` | §5 rule 4 — a reference script | [`2fae09a684e5b299…`](https://preprod.cardanoscan.io/transaction/2fae09a684e5b299a9522b119cc0299f23045085ed242279d5a957dac72821dd) |
-| 12 | `adapter_minswap` | §5 rule 4 — the venue adapter | [`5b919d8e735a0977…`](https://preprod.cardanoscan.io/transaction/5b919d8e735a097790bbf84564f349dce703d1001f148682b8de75bf0f73287e) |
-| 13 | `register 9 account(s)` | stake registration | [`769d174f2e28eef9…`](https://preprod.cardanoscan.io/transaction/769d174f2e28eef9d1c75e459b062843ef34023a742dcaed842cc1e29aad9c3f) |
-| 14 | `update-adapters` | §14.2.6 `UpdateAdapters` | [`f15c0b5ca41e2ce7…`](https://preprod.cardanoscan.io/transaction/f15c0b5ca41e2ce70142f4d91d0abfa42e4ed329ce0faede6d2d8cce79e90fa7) |
-| 15 | `consolidate` | wallet hygiene | [`1eebf2fd472f3157…`](https://preprod.cardanoscan.io/transaction/1eebf2fd472f3157a3e75d184e37995574175540142f7a7985f197a270c2aa3c) |
-| 16 | `create-market` | §20 `CreateMarket` | [`c0848a5a58b50f3f…`](https://preprod.cardanoscan.io/transaction/c0848a5a58b50f3f289c6154d90ea17f5247c8b443317bd546b01368127a42a9) |
-| 17 | `supply` | §18 `TopupWithdraw`, deposit | [`209c6a1710247052…`](https://preprod.cardanoscan.io/transaction/209c6a1710247052a43bf911ba71a3ac8965893693f24424a616303feea3cfa5) |
-| 18 | `create-market` | §20 `CreateMarket` | [`8203be9ba6b7a861…`](https://preprod.cardanoscan.io/transaction/8203be9ba6b7a861b281f6e2db7e7cd5fba28c518cf8dd6a552eecc83d5b2971) |
-| 19 | `supply` | §18 `TopupWithdraw`, deposit | [`73d6291fa9e5a750…`](https://preprod.cardanoscan.io/transaction/73d6291fa9e5a750e3ad82b929c558db9fe6a560e1027bca2fcb30673219d4e4) |
-| 20 | `create-market` | §20 `CreateMarket` | [`a8ea5df73a3ccaae…`](https://preprod.cardanoscan.io/transaction/a8ea5df73a3ccaae5120bf1ac8fc9a6fe7a3d6b7a22ec24705def2f4a1ebada5) |
-| 21 | `supply` | §18 `TopupWithdraw`, deposit | [`ffd97eef07160622…`](https://preprod.cardanoscan.io/transaction/ffd97eef071606227274d11f89d1405146c88826cc678c7417a22471c8bda7f5) |
-| 22 | `update-adapters` | §14.2.6 `UpdateAdapters` | [`774ee74a27a830d3…`](https://preprod.cardanoscan.io/transaction/774ee74a27a830d399c6e11141116a261e4d33545bb09f3b130efe11ec7b46af) |
-| 23 | `adapter_minswap` | §5 rule 4 — the venue adapter | [`db68dcc78cfce730…`](https://preprod.cardanoscan.io/transaction/db68dcc78cfce730f0a3be8a3713d6d15f2b26017dcf0af72d4f59c702c9de48) |
-| 24 | `update-adapters` | §14.2.6 `UpdateAdapters` | [`44a66ee6aa2e0f97…`](https://preprod.cardanoscan.io/transaction/44a66ee6aa2e0f97468a7c353f20359d9a8cad5e9b093927d00dda0194bd6203) |
-| 25 | `register 1 account(s)` | stake registration | [`b7433e8b50c65248…`](https://preprod.cardanoscan.io/transaction/b7433e8b50c65248ed03f77b95d9f30dbf92555e551f4ce9bb8e43c3710431a9) |
-| 26 | `borrow-async` | §7.6 `OpenDirect` with a claim — one transaction opens and places the swap | [`1b8fec515b4d6602…`](https://preprod.cardanoscan.io/transaction/1b8fec515b4d660207b74ccf5c03a2cdcbdc5c01c5278f4e6c9d4eb297fe65b8) |
-| 27 | `settle-claim` | §8 `SettleClaim` | [`46ec9b2cd8bb248d…`](https://preprod.cardanoscan.io/transaction/46ec9b2cd8bb248decc80f246947a4a41ffac8050838a04e4bbccdd47688bb5f) |
-| 28 | `sweep` | wallet hygiene | [`ec04f3958d289a5e…`](https://preprod.cardanoscan.io/transaction/ec04f3958d289a5ef85721b5319967a72cb9cea37dd9dca7ebda9b092c251947) |
-| 29 | `create-order` | §6 `CreateOrder` | [`4c2dc5ffcccae963…`](https://preprod.cardanoscan.io/transaction/4c2dc5ffcccae96379014298595fcdfecc84e30b66626b106a8becf938aad246) |
-| 30 | `fill-sync` | §7.3 the synchronous fill | [`40e275d68d2efc0a…`](https://preprod.cardanoscan.io/transaction/40e275d68d2efc0ad16f9c0867b5a37f0460be3fcfd47abbccfdc74f3788ab56) |
-| 31 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`2751d19d56068f18…`](https://preprod.cardanoscan.io/transaction/2751d19d56068f188df45ae1e74eeb7ce17c5c617901872357882d6ab3c48bc3) |
-| 32 | `repay` | §10.1 `RepayLoan` | [`c07e7a239084ac99…`](https://preprod.cardanoscan.io/transaction/c07e7a239084ac9959a86364dac38d17e7df588b4f958ca5728f41c9a8dbb06b) |
-| 33 | `sweep` | wallet hygiene | [`bf5fcbb96584986a…`](https://preprod.cardanoscan.io/transaction/bf5fcbb96584986a2acb84a58972ee2037d0243ded05c4eca89d270833231f1c) |
-| 34 | `create-order` | §6 `CreateOrder` | [`283bed3a07b345ac…`](https://preprod.cardanoscan.io/transaction/283bed3a07b345ac71a373025d8559070345602a64c9faf9a6e637cb20112476) |
-| 35 | `fill-sync` | §7.3 the synchronous fill | [`984e9bbe6ba04d5d…`](https://preprod.cardanoscan.io/transaction/984e9bbe6ba04d5d9f7ce053859e9d44afca51d58ad100b270edb09a1e108442) |
-| 36 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`492f9b0dd6cc792d…`](https://preprod.cardanoscan.io/transaction/492f9b0dd6cc792d5af4646ca1268cd28b72570630186dd7d4c2bd822d691fa6) |
-| 37 | `repay` | §10.1 `RepayLoan` | [`b4ed97bced32b500…`](https://preprod.cardanoscan.io/transaction/b4ed97bced32b500a6b593cf05873625b57b49a60c7f2abeb908bdf23f33e319) |
-| 38 | `supply` | §18 `TopupWithdraw`, deposit | [`c5fe7efa27251d85…`](https://preprod.cardanoscan.io/transaction/c5fe7efa27251d850b4b2519ae2bd05dba6080d395109836ea8f1c86afd02ec8) |
-| 39 | `sweep` | wallet hygiene | [`eb02a1f05a1feda8…`](https://preprod.cardanoscan.io/transaction/eb02a1f05a1feda8913a92762a08789a2e969f9bc67f9c220be693f8d2f62c9a) |
-| 40 | `create-order` | §6 `CreateOrder` | [`9d79314e9e9a9a01…`](https://preprod.cardanoscan.io/transaction/9d79314e9e9a9a018039caf36c5522b0e75cf192bc423db059b27eb0c09adb8d) |
-| 41 | `sweep` | wallet hygiene | [`82637acd823cfab8…`](https://preprod.cardanoscan.io/transaction/82637acd823cfab85903dbeb97125dc10018ebf3ec2cbbe71c69498239f22e18) |
-| 42 | `fill-minswap` | §7.2 with §7.4 — the asynchronous fill | [`2b7ee2e6d68d8d7f…`](https://preprod.cardanoscan.io/transaction/2b7ee2e6d68d8d7fcc134c8b828e719c2ca0d9b74896a96da042cc6bfd9aa931) |
-| 43 | `settle-claim` | §8 `SettleClaim` | [`28ee6fa1b722e793…`](https://preprod.cardanoscan.io/transaction/28ee6fa1b722e793499716762e702c90e62b676e4b33754003322f90f30f864c) |
-| 44 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`348e90e0d7a054e5…`](https://preprod.cardanoscan.io/transaction/348e90e0d7a054e5e2d4b62117f1be6950cdcb6f5265803fdd723959a353508e) |
-| 45 | `borrow` | §7.6 `OpenDirect`, collateral already held | [`83cc29d95dcbf1ff…`](https://preprod.cardanoscan.io/transaction/83cc29d95dcbf1ffbb97f2275e14cbcc0f6af62f9288cccd33cd4a77c2762017) |
-| 46 | `borrow` | §7.6 `OpenDirect`, collateral already held | [`cc071be7937affc3…`](https://preprod.cardanoscan.io/transaction/cc071be7937affc3b3089aba7aae6a4787685619edaaa9d2c579de85dd299746) |
-| 47 | `liquidate` | §11 `Liquidate` | [`cda16a79e7900c14…`](https://preprod.cardanoscan.io/transaction/cda16a79e7900c14e168952c7c35b30a6749138e08a93023e02c7ee95c26341d) |
-| 48 | `collect-remain` | §13.3 `CollectRemain` | [`f26d594d0d428766…`](https://preprod.cardanoscan.io/transaction/f26d594d0d4287669319fb90f3e50df0f29f8086b94b626aea0153bba2e868da) |
-| 49 | `sweep` | wallet hygiene | [`5ebdc91f747db182…`](https://preprod.cardanoscan.io/transaction/5ebdc91f747db182d49d9c3657a5bfa99e9604e3472bdce177835011b58ac7c1) |
-| 50 | `create-order` | §6 `CreateOrder` | [`909ba9cf29f0fbba…`](https://preprod.cardanoscan.io/transaction/909ba9cf29f0fbbaf4c901afe82fe8e5986fa206a4425841e32718a7e4544879) |
-| 51 | `fill-sync` | §7.3 the synchronous fill | [`8385aef413f3251a…`](https://preprod.cardanoscan.io/transaction/8385aef413f3251acb2f9f43b0c4f4616fd21956924e1d3e0d8e2c681078b427) |
-| 52 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`0643e1358d9f8cce…`](https://preprod.cardanoscan.io/transaction/0643e1358d9f8ccea6dcb6a8552bc8643c630b3577cc537beb2d9b15b0ca7640) |
-| 53 | `sweep` | wallet hygiene | [`582d4ccfede2d1ea…`](https://preprod.cardanoscan.io/transaction/582d4ccfede2d1eaa65e6b7a4643296be121a7b317ed1365760e1dc595f8190b) |
-| 54 | `create-order` | §6 `CreateOrder` | [`a1b38e56d8b5b8ec…`](https://preprod.cardanoscan.io/transaction/a1b38e56d8b5b8ec5b4294143e55850ffedc2efac2b104030575ff7c29491837) |
-| 55 | `sweep` | wallet hygiene | [`103051a52e88613f…`](https://preprod.cardanoscan.io/transaction/103051a52e88613fe6bf1626471121207d6537b7d21f37cdbe34900a6b058226) |
-| 56 | `fill-minswap` | §7.2 with §7.4 — the asynchronous fill | [`99ddcc5c1237c03a…`](https://preprod.cardanoscan.io/transaction/99ddcc5c1237c03acdf04be948d257ac08e1a3366499656f9b33a1960cfff833) |
-| 57 | `cancel-claim` | §4.3 the claim is cancelled once expired | [`30a6c90fe44f96e9…`](https://preprod.cardanoscan.io/transaction/30a6c90fe44f96e95dde69359364bb2de053c2353d447861d00b0499775cc5a5) |
-| 58 | `rollback` | §12.3 `Rollback` | [`0cbe9d818899f190…`](https://preprod.cardanoscan.io/transaction/0cbe9d818899f190986f7446123a4674b889570ac3a521eacc3110bc28c649d6) |
-| 59 | `collect-remain` | §13.3 `CollectRemain` | [`bba6082c88db21f6…`](https://preprod.cardanoscan.io/transaction/bba6082c88db21f63f37cf7dfa656052a098201ee7748679b2c730ced4ec8885) |
-| 60 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`3508c775df794dae…`](https://preprod.cardanoscan.io/transaction/3508c775df794daea804a8f2dcc7711d3a2a185a093bbb6b1470a4d38b1be165) |
-| 61 | `redeem` | §18 `TopupWithdraw`, withdrawal | [`6827c7c1a3b0aafc…`](https://preprod.cardanoscan.io/transaction/6827c7c1a3b0aafc38676c7e67cc91b43d8490d43e5dd12ff6b429dacf09519c) |
-| 62 | `modify-position` | §16 `ModifyPosition` | [`0220ae2d43e9fcb8…`](https://preprod.cardanoscan.io/transaction/0220ae2d43e9fcb8cab63563dac0481b74a550f1a0d1c7a0bea7935d86a83853) |
-| 63 | `close-async` | §10.2.1 the sell claim | [`261421ceaf98b42e…`](https://preprod.cardanoscan.io/transaction/261421ceaf98b42e235bed1ebc46927b37359ac39a76213fa55f50b4721411fe) |
-| 64 | `sweep` | wallet hygiene | [`5289144e373efa23…`](https://preprod.cardanoscan.io/transaction/5289144e373efa234995b8f216b7b0beadace4bd2c931a2d4d095a345af5d28c) |
-| 65 | `create-order` | §6 `CreateOrder` | [`8e18f8670faa498f…`](https://preprod.cardanoscan.io/transaction/8e18f8670faa498fc666cc5e74faf8834c72db2efc39ba32f87115930476db5e) |
-| 66 | `fill-sync` | §7.3 the synchronous fill | [`7b7f919c3ba543e5…`](https://preprod.cardanoscan.io/transaction/7b7f919c3ba543e5fd3bdf6dc619eb482505cdf9f8f3c70b839c82f6d0a40f08) |
-| 67 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`1afa461f7304361b…`](https://preprod.cardanoscan.io/transaction/1afa461f7304361bdaf7a01d226711b7804e8f2f7bdbcadee8af42d1144e23bc) |
-| 68 | `modify-position` | §16 `ModifyPosition` | [`95e3abf8cf0ce432…`](https://preprod.cardanoscan.io/transaction/95e3abf8cf0ce432aaeaeaed83b224376c358dde059650a5c8bc7b85905047ad) |
-| 69 | `sweep` | wallet hygiene | [`7341b906e046911d…`](https://preprod.cardanoscan.io/transaction/7341b906e046911db34bbda57fd307952ad04f6c98b40f02a32dbcb49c6a49dc) |
-| 70 | `take-profit` | §10.2.1, the take-profit close no one signed | [`ecc7436afbb90690…`](https://preprod.cardanoscan.io/transaction/ecc7436afbb9069016436c082011a1c60afb25c4c3f398bcdff501035b5c844a) |
-| 71 | `tidy` | — | [`abd222adfe182d9d…`](https://preprod.cardanoscan.io/transaction/abd222adfe182d9dddf06ddfa66405cbf8dec1710e325efff9391258b79979a1) |
-| 72 | `update-market-param` | §15 `UpdateMarketParam` | [`202ca877848478f7…`](https://preprod.cardanoscan.io/transaction/202ca877848478f7b12906e8936541c1cb2a705516c88f75cf0359b1deebe6d2) |
-| 73 | `withdraw-fee` | §19 `WithdrawFee` | [`8c5f1a211dbec4f2…`](https://preprod.cardanoscan.io/transaction/8c5f1a211dbec4f20bba05915cc71e2774d24abf04e180efdf647b9c1858a09a) |
-| 74 | `announce-oracle` | §14.2.5 `AnnounceOracle` | [`67de5dda290ce7f2…`](https://preprod.cardanoscan.io/transaction/67de5dda290ce7f239b8764bd836c2d5e9ac8c041221ad7f4de29fba6a447fa5) |
-| 75 | `settle-close` | §10.2.2 repay on fill | [`70e4aa6c15d9badc…`](https://preprod.cardanoscan.io/transaction/70e4aa6c15d9badc56658010daf9be937faeb0ac99b7355cb723d3db6e78c749) |
-| 76 | `settle-close` | §10.2.2 repay on fill | [`0b7a2f2e118ddb41…`](https://preprod.cardanoscan.io/transaction/0b7a2f2e118ddb41bbe365bdf40ad50b3a39690f62c66a9ebf10ae9edec04af3) |
-| 77 | `create-order` | §6 `CreateOrder` | [`7fbbf32207bfc043…`](https://preprod.cardanoscan.io/transaction/7fbbf32207bfc043a736f79fe6ceb2a5422a3ab31c817684f4414cce49a49f40) |
-| 78 | `fill-sync` | §7.3 the synchronous fill | [`757bdf025cda5f0e…`](https://preprod.cardanoscan.io/transaction/757bdf025cda5f0e5ffd779695666f564e93b49424fdbbf653643cff71d72bb5) |
-| 79 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`c76e7ebaf860e4ad…`](https://preprod.cardanoscan.io/transaction/c76e7ebaf860e4adea39cfe4c2cb9bec460ca5d4338c201f63d45dc397461098) |
-| 80 | `repay` | §10.1 `RepayLoan` | [`b0106e78cc71c316…`](https://preprod.cardanoscan.io/transaction/b0106e78cc71c31644d4c52b13613eaaa9d4844a96f89b7479f37173d87e6f2a) |
-| 81 | `collect-remain` | §13.3 `CollectRemain` | [`5db52ea31b0f0b72…`](https://preprod.cardanoscan.io/transaction/5db52ea31b0f0b72761b576d78e2524ed05d80d346d003d98243dbc6936721b5) |
+| 1 | `genesis` | §14 genesis — the registry | [`7e291ad34a25ded0…`](https://preprod.cardanoscan.io/transaction/7e291ad34a25ded08f2dc0e9b74b61add19899abcd19590e986a110369cd8983) |
+| 2 | `publish protocol_config` | §5 rule 4 — a reference script | [`f19ea054b479c121…`](https://preprod.cardanoscan.io/transaction/f19ea054b479c1217fe8edbad57f52b7ab60d8e036709fde289123409983e268) |
+| 3 | `publish market_param` | §5 rule 4 — a reference script | [`bb1b2a0d2d3367b7…`](https://preprod.cardanoscan.io/transaction/bb1b2a0d2d3367b716c9fa71d840dea1f3b7c2edd8471c7b463580f0ff514565) |
+| 4 | `publish pool` | §5 rule 4 — a reference script | [`808123fa62e6df7d…`](https://preprod.cardanoscan.io/transaction/808123fa62e6df7d16af8e46211b701bb0753f7fad73628525aa0b07116e8111) |
+| 5 | `publish loan` | §5 rule 4 — a reference script | [`a27b7e86978e7332…`](https://preprod.cardanoscan.io/transaction/a27b7e86978e73328479a8f8a739108732666f7ef78e8fecfd8bfc01dc4c432d) |
+| 6 | `publish loan_repay` | §5 rule 4 — a reference script | [`9e7a1f562dc62950…`](https://preprod.cardanoscan.io/transaction/9e7a1f562dc62950a74ffc0c88b87e34783b186c01000d634d4a70fbcc681056) |
+| 7 | `publish loan_close` | §5 rule 4 — a reference script | [`8bd4e6d05e8cb9f2…`](https://preprod.cardanoscan.io/transaction/8bd4e6d05e8cb9f2b1335203682af66612c6dcb2dcd90af373477a1ced4045ff) |
+| 8 | `publish order` | §5 rule 4 — a reference script | [`cf9bc37aa13535d1…`](https://preprod.cardanoscan.io/transaction/cf9bc37aa13535d1c24bce7f1f5cad5596f8387b7d3847315e435839d50df318) |
+| 9 | `publish position` | §5 rule 4 — a reference script | [`f4e0fb3df4dd6c08…`](https://preprod.cardanoscan.io/transaction/f4e0fb3df4dd6c083590f2a733f110cd6762cc45a91c3e802ae90d6af3c7ff1d) |
+| 10 | `publish cancel` | §5 rule 4 — a reference script | [`61c2b5fa221c666b…`](https://preprod.cardanoscan.io/transaction/61c2b5fa221c666b0b3938aa2f243c507fb4827edac5e988ca21f79341e14d5e) |
+| 11 | `publish adapter_sync_generic` | §5 rule 4 — a reference script | [`183d671e7a825f9a…`](https://preprod.cardanoscan.io/transaction/183d671e7a825f9a7b6c4cc66d75601067a900b7797cbfb1dbdc5b1137e3354d) |
+| 12 | `adapter_minswap` | §5 rule 4 — the venue adapter | [`3c6238c6fd91aa64…`](https://preprod.cardanoscan.io/transaction/3c6238c6fd91aa64fee5b7a02a9a030ad987e4151cdd1937bc2e1dbad1bd5929) |
+| 13 | `register 9 account(s)` | stake registration | [`5bf7d961ac781fab…`](https://preprod.cardanoscan.io/transaction/5bf7d961ac781fabbf00ff79a705e8fbf61b5a9f0e6a6785544c8045278a7b7d) |
+| 14 | `update-adapters` | §14.2.6 `UpdateAdapters` | [`daa56f316f791555…`](https://preprod.cardanoscan.io/transaction/daa56f316f791555ed012391cc1748ed44d30452bfc14730345a3ca9fd97ea6a) |
+| 15 | `create-market` | §20 `CreateMarket` | [`e0dd22682b077a05…`](https://preprod.cardanoscan.io/transaction/e0dd22682b077a05d6e370a0406b89a60e5438e1c89ce9d00ab977e8b5106e97) |
+| 16 | `supply` | §18 `TopupWithdraw`, deposit | [`81bf262dbe24a253…`](https://preprod.cardanoscan.io/transaction/81bf262dbe24a2534eae4d9abe9982d0dfe25703d65d137c144292b1cd3fb2c9) |
+| 17 | `create-market` | §20 `CreateMarket` | [`cdf9d0207c3e70f4…`](https://preprod.cardanoscan.io/transaction/cdf9d0207c3e70f4c2f77625961183d14c7e4a7a4f58f6d22ccf82a2a122b5ff) |
+| 18 | `supply` | §18 `TopupWithdraw`, deposit | [`a5e88e955dde9b13…`](https://preprod.cardanoscan.io/transaction/a5e88e955dde9b13e6eddddb6fe8d562465d5ac5371f598791f40285f960f85a) |
+| 19 | `create-market` | §20 `CreateMarket` | [`905cbd8129747f4b…`](https://preprod.cardanoscan.io/transaction/905cbd8129747f4bc4dea5bd82f5104bcde3dbf08be20255f778d144041b68f2) |
+| 20 | `supply` | §18 `TopupWithdraw`, deposit | [`64bc73acfc27c860…`](https://preprod.cardanoscan.io/transaction/64bc73acfc27c860d4dc2d93162631d39c638354d1c16fd9880fa8e3477bf210) |
+| 21 | `sweep` | wallet hygiene | [`f01df41c8142fb8c…`](https://preprod.cardanoscan.io/transaction/f01df41c8142fb8cb7bfd675f33228fd51edb6199bc46bacab846e84bd91f9b0) |
+| 22 | `create-order` | §6 `CreateOrder` | [`f4ae3c114e843c54…`](https://preprod.cardanoscan.io/transaction/f4ae3c114e843c54093103683ff080c9a6453a216ca6eec6e1ecaf045f5a7314) |
+| 23 | `fill-sync` | §7.3 the synchronous fill | [`2458a12b74a0eb07…`](https://preprod.cardanoscan.io/transaction/2458a12b74a0eb077bc1b5aeb6008adfae0811dd6f5f582b862567c7fb491880) |
+| 24 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`377ac1b6932665ef…`](https://preprod.cardanoscan.io/transaction/377ac1b6932665ef662295f7e16486caa8ed36c99e58009d4835cae3eef65a08) |
+| 25 | `modify-position` | §16 `ModifyPosition` | [`6d5725b33804fbe0…`](https://preprod.cardanoscan.io/transaction/6d5725b33804fbe08c1451da036fb4301214d4c7e93b8f3b8869aba563ecd763) |
+| 26 | `sweep` | wallet hygiene | [`e2d88afdd4bd1700…`](https://preprod.cardanoscan.io/transaction/e2d88afdd4bd1700626c552466f832e9655656c77c66554edbf9e9c19bed29b4) |
+| 27 | `create-order` | §6 `CreateOrder` | [`5eb123566b05c1b9…`](https://preprod.cardanoscan.io/transaction/5eb123566b05c1b9b3b923e25d164e645f8f7b998ef0f6d6adbb19ab783b333e) |
+| 28 | `fill-sync` | §7.3 the synchronous fill | [`11d54b3852666e95…`](https://preprod.cardanoscan.io/transaction/11d54b3852666e9591db06f6bb045e6762f878255eed8469b742d80fbded9469) |
+| 29 | `cancel-order` | §9.3 `ModifyOrder`, cancel arm | [`291326abb842507d…`](https://preprod.cardanoscan.io/transaction/291326abb842507d083f63e1cc91f61a6ee02a4885f5d5c16a464113b24e8169) |
+| 30 | `modify-position` | §16 `ModifyPosition` | [`73a63ff2f1e9a389…`](https://preprod.cardanoscan.io/transaction/73a63ff2f1e9a389e565a6d7b8f036a66455559205d4b0f8f2fa744d5fc7d256) |
+| 31 | `sweep` | wallet hygiene | [`5a0789106a669705…`](https://preprod.cardanoscan.io/transaction/5a0789106a6697050507fee222a281046b88654e610bc994e04c8fad2a668f84) |
+| 32 | `take-profit` | §10.2.1, the take-profit close no one signed | [`9fb4d78150fcf98a…`](https://preprod.cardanoscan.io/transaction/9fb4d78150fcf98a2b261a24a71e311f177a39e46d36a9c3a095a857a36d458a) |
 
 ## 4. How each transaction is shaped
 
@@ -553,8 +504,19 @@ The mirror image of §4.7: the collateral goes to the venue and the loan keeps a
 | redeemer | `LoanRedeemer` action `Constr(2, [[indexer], market_ref_idx, pool_ref_idx, -1, -1, adapter_skh])` with `loan_out_idx` and `position_out_idx` set |
 
 The pool is a **reference** input on this arm — it moves no value, and the floor
-needs only its index, checked against `max_index_staleness`. The loan must be
-**healthy** here, which is the opposite of §11's gate.
+needs only its index. The loan must be **healthy** here, which is the opposite of
+§11's gate.
+
+§5 rule 6's freshness bound is **not** applied to that reference read, and this
+is the one arm it would have applied to. Because the pool is referenced rather
+than spent, nothing here can advance its index — so the bound turned a pool
+nobody had spent for an hour into a position nobody could close, which is exactly
+when a trader wants out. What it bought was a ceiling on how understated
+`debt_at(expiry)` can be, and the claim's own `floor` still has to clear
+`health_floor` at that debt: a stale index lowers that floor, it does not remove
+it. `max_index_staleness` stays in `MarketDatum` with its §1.3 bounds, unread —
+§15 could only ever lower it and §1.3 caps it at an hour, so raising it was never
+a way out. Removing the read moved `loan_repay` 13 050 → 12 914 bytes compiled.
 
 ```
 sold         = net(loan_in_value, long_token)     -- the whole collateral
@@ -802,8 +764,11 @@ fill trades against **is** the pool the oracle reads the rate from, so the
 reference list named one UTxO twice. The ledger dedupes; the list the indices
 were taken over did not, and every index past the repeat was one too high.
 
-With all four fixed, every price-reading arm ran on this registry, against the
-fUSDM market — the pair whose oracle path is maintained:
+With all four fixed, every price-reading arm ran against the fUSDM market — the
+pair whose oracle path is maintained. **The table below is registry `7e97f3dd`**,
+the one before this: §10.2.1 dropping the freshness bound moved `loan_repay`, so
+this registry carries only the transactions §3 lists — the take-profit among them,
+which is the arm that read the bound.
 
 | Arm | | Transaction |
 |---|---|---|
@@ -970,6 +935,12 @@ Each of these cost a rejected transaction here.
 ---
 
 ## 7. Where it ended
+
+**Registry `7e97f3dd`, the one before this.** The numbers below were read after
+its last transaction. This registry has three fresh pools — 800 ADA, 200,000,000
+fUSDM, 1 fBTC — and only the transactions §3 lists; the sample set was not re-run,
+since the one validator that moved was `loan_repay` and §10.2.1 is what exercises
+it. That arm ran here: [`9fb4d781…`](https://preprod.cardanoscan.io/transaction/9fb4d78150fcf98a2b261a24a71e311f177a39e46d36a9c3a095a857a36d458a).
 
 Read back off chain after the last transaction:
 
