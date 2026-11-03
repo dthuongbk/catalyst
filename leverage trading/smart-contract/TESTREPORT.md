@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | Suite | `aiken check` |
-| Result | **290 tests, 0 failures** |
+| Result | **291 tests, 0 failures** |
 | Modules with tests | 32 — 21 inline, 11 under `lib/tests/` |
 | Compiler | Aiken v1.1.17+c3a7fba, Plutus V3 |
 | Dependencies | `aiken-lang/stdlib` v3.0.0, `danogo2023/daken` v2.3.5 |
@@ -12,7 +12,7 @@
 | Build | `aiken build -t silent` succeeds; largest validator `loan` at 14 532 bytes against a 16 384 limit |
 
 ```bash
-aiken check                 # 290 tests
+aiken check                 # 291 tests
 aiken build -t silent       # the eleven validators
 ```
 
@@ -30,11 +30,11 @@ out.
 
 Two block forms appear, and they carry different weight:
 
-- A **plain block** asserts a shape is accepted. 137 of the 290 are plain, and
+- A **plain block** asserts a shape is accepted. 138 of the 291 are plain, and
   many are table-driven: 201 tabulated case rows sit inside them, each a
   labelled row with its own `expected`, so the number of distinct scenarios
   exercised is well above the number of blocks.
-- A **`fail` block** asserts a shape is rejected. 153 of the 290 are `fail`
+- A **`fail` block** asserts a shape is rejected. 153 of the 291 are `fail`
   blocks.
 
 A `fail` block is weaker evidence than it looks, and the suite is built around
@@ -62,10 +62,10 @@ short_from_order_in`) and §7.2.7 sits on the leverage cap,
 `leverage_cap(8000, 0) = 5.00x`. Two accepting blocks establish it, one per
 venue arm, and twenty-nine single-field departures follow.
 
-## 2. Why 195 of these tests are not beside the code they test
+## 2. Why 196 of these tests are not beside the code they test
 
 The 95 tests that came first are inline, each in the module it exercises. The
-195 added since are in eleven new modules under `lib/tests/`, and that is a
+196 added since are in eleven new modules under `lib/tests/`, and that is a
 departure from the repository's own habit made for one reason: **every validator
 hash is a compile-time function of the bytes of its own source**, and the
 registry recorded in `deployments/preprod.json` is the one in use. A file under
@@ -98,13 +98,13 @@ subject already exports, so no visibility had to be widened to accommodate them.
 | `tests/protocol_utils_test` | `protocol/utils.ak` | 21 | 10 | 11 |
 | `tests/position_utils_test` | `position/utils.ak` | 20 | 8 | 12 |
 | `tests/create_position_test` | `position/create_position.ak` | 9 | 2 | 7 |
-| `tests/modify_position_test` | `position/modify_position.ak` | 21 | 6 | 15 |
+| `tests/modify_position_test` | `position/modify_position.ak` | 22 | 7 | 15 |
 | `tests/close_position_test` | `position/close_position.ak` | 16 | 4 | 12 |
 | `tests/modify_order_test` | `order/modify_order.ak` | 34 | 8 | 26 |
 | `tests/execute_order_test` | `order/execute.ak` | 31 | 4 | 27 |
 | `tests/sync_generic_test` | `adapter/sync_generic.ak` | 17 | 12 | 5 |
 | `tests/market_params_test` | the deployer's market datum | 8 | 8 | 0 |
-| | | **195** | **77** | **118** |
+| | | **196** | **78** | **118** |
 
 Ten of the eleven subjects had **no test at all** before — about 1 400 lines,
 including the whole position arm and order execution, the two most expensive
@@ -219,7 +219,7 @@ The honest limits, in the order they matter.
    left undetected: four causes, three of them invisible from the node's error,
    and all four found by submitting rather than by testing.
 
-4. **No property or fuzz testing.** All 290 blocks are unit tests over chosen
+4. **No property or fuzz testing.** All 291 blocks are unit tests over chosen
    values. Aiken supports property tests; none is used. The arithmetic modules —
    `loan/utils`' `debt_at`, `pool/utils`' interest curve, `order/utils`'
    `leverage_cap` — are the obvious candidates, and their floor-division
@@ -281,7 +281,7 @@ The two halves prove different things and neither substitutes for the other.
 | | Unit tests | DEPLOYMENT.md |
 |---|---|---|
 | What is exercised | one `validate` function per case | whole transactions, submitted |
-| Coverage | every module with logic, 290 cases | every arm the spec has, 81 transactions |
+| Coverage | every module with logic, 291 cases | every arm the spec has, 81 transactions |
 | Catches | a rule that admits what it should reject | a rule no builder can satisfy at all |
 | Blind to | everything in §5 above | anything a built transaction never reaches |
 | Cost of a failure | a second | a rejected submission and, twice here, a fresh genesis |

@@ -45,8 +45,8 @@ section 1 says which.
 aiken check
 ```
 
-290 tests across 32 modules. **[`TESTREPORT.md`](TESTREPORT.md)** is the account
-of them: what a `fail` block does and does not prove, why 195 of them live in
+291 tests across 32 modules. **[`TESTREPORT.md`](TESTREPORT.md)** is the account
+of them: what a `fail` block does and does not prove, why 196 of them live in
 `lib/tests/` rather than beside their subject, coverage per module, and —
 section 5 — the six things this suite is blind to, which is the half of the
 picture [`DEPLOYMENT.md`](DEPLOYMENT.md) carries.

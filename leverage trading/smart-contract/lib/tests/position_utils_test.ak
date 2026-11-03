@@ -304,7 +304,7 @@ test valid_position_params_bounds_each_field() {
         want: False,
       },
       BoolCase {
-        label: "a stop-loss below the price",
+        label: "a positive stop-loss",
         got: position_utils.valid_position_params(
           PositionDatum { ..base, stop_loss_price: PRational(3, 2) },
         ),

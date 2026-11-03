@@ -72,7 +72,7 @@ fn t_position() -> PositionDatum {
   PositionDatum {
     long_token: t_long,
     take_profit_price: PRational(2, 1),
-    stop_loss_price: PRational(0, 1),
+    stop_loss_price: PRational(1, 1),
     min_execution_amount: 100_000_000,
     max_slippage: 300,
     beneficiary: t_wallet(),
@@ -155,8 +155,8 @@ fn t_run_full(
 }
 
 /// §16 — no value moves. The three fields §16.2.6 pins are the position's
-/// identity; `take_profit_price` and a **rising** `min_execution_amount` are the
-/// two a trader may rewrite.
+/// identity; `take_profit_price`, `stop_loss_price` and a **rising**
+/// `min_execution_amount` are the three a trader may rewrite.
 test modify_position_accepts_a_new_take_profit_price() {
   t_run(
     t_position_out(
@@ -177,12 +177,21 @@ test modify_position_accepts_clearing_the_take_profit_price() {
   )
 }
 
-/// `stop_loss_price` is rewritten the same way, and `0` turns it off.
 test modify_position_accepts_a_new_stop_loss_price() {
   t_run(
     t_position_out(
       t_position_value(constants.min_ada),
       PositionDatum { ..t_position(), stop_loss_price: PRational(3, 2) },
+    ),
+  )
+}
+
+/// A zero numerator is the "no stop-loss" encoding, so §16 also turns one off.
+test modify_position_accepts_clearing_the_stop_loss_price() {
+  t_run(
+    t_position_out(
+      t_position_value(constants.min_ada),
+      PositionDatum { ..t_position(), stop_loss_price: PRational(0, 1) },
     ),
   )
 }
