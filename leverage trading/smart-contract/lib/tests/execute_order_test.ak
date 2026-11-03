@@ -137,6 +137,7 @@ fn t_order(fee_reserve: Int) -> OrderDatum {
     short_amount: t_short_amount,
     open_limit_price: PRational(1, 1),
     take_profit_price: PRational(2, 1),
+    stop_loss_price: PRational(0, 1),
     min_liquidation_threshold: 8000,
     min_execution_amount: 100_000_000,
     max_slippage: 300,
@@ -236,6 +237,7 @@ fn t_position_out() -> Output {
       PositionDatum {
         long_token: t_ada,
         take_profit_price: PRational(2, 1),
+        stop_loss_price: PRational(0, 1),
         min_execution_amount: 100_000_000,
         max_slippage: 300,
         beneficiary: t_wallet(),
@@ -804,6 +806,7 @@ test execute_rejects_a_position_datum_that_is_not_a_copy_of_the_order() fail {
         PositionDatum {
           long_token: t_ada,
           take_profit_price: PRational(2, 1),
+          stop_loss_price: PRational(0, 1),
           min_execution_amount: 100_000_000,
           max_slippage: 300,
           beneficiary: Address {

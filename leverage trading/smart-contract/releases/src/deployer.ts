@@ -1135,8 +1135,8 @@ export class Deployer {
     const shortAmount = od.fields[2] as bigint;
     const limit = od.fields[3] as Constr<any>;
     const [limitNum, limitDen] = [limit.fields[0] as bigint, limit.fields[1] as bigint];
-    const feeReserve = od.fields[12] as bigint;
-    const maxSlippage = od.fields[7] as bigint;
+    const feeReserve = od.fields[13] as bigint;
+    const maxSlippage = od.fields[8] as bigint;
 
     const pd = Data.from(pool.datum!) as Constr<any>;
     const at = (i: number) => pd.fields[i] as bigint;
@@ -1283,11 +1283,11 @@ export class Deployer {
     const orderOut = new Constr(0, [
       ...od.fields.slice(0, 2),
       shortAmount - loanAmount - shortFromOrderIn,
-      ...od.fields.slice(3, 12),
+      ...od.fields.slice(3, 13),
       feeReserve - afc,
     ]);
     const positionOut = new Constr(0, [
-      od.fields[0], od.fields[4], od.fields[6], od.fields[7], od.fields[11],
+      od.fields[0], od.fields[4], od.fields[5], od.fields[7], od.fields[8], od.fields[12],
     ]);
     const claim = new Constr(0, [
       skh.adapter_minswap,
@@ -2147,7 +2147,7 @@ export class Deployer {
     const od = Data.from(order.datum!) as Constr<any>;
     const shortAmount = od.fields[2] as bigint;
     const limit = od.fields[3] as Constr<any>;
-    const feeReserve = od.fields[12] as bigint;
+    const feeReserve = od.fields[13] as bigint;
     const { from, to, startMs } = this.window();
     const st = this.poolState(pool, startMs, ACTIVE);
     // The margin is whatever the order holds of the supply token, net of what is
@@ -2247,10 +2247,10 @@ export class Deployer {
 
     const orderOut = new Constr(0, [
       ...od.fields.slice(0, 2), shortAmount - loanAmount - shortFromOrderIn,
-      ...od.fields.slice(3, 12), feeReserve,
+      ...od.fields.slice(3, 13), feeReserve,
     ]);
     const positionOut = new Constr(0, [
-      od.fields[0], od.fields[4], od.fields[6], od.fields[7], od.fields[11],
+      od.fields[0], od.fields[4], od.fields[5], od.fields[7], od.fields[8], od.fields[12],
     ]);
     const loanOut = new Constr(0, [
       new Constr(0, [[skh.loan, seedName]]),
@@ -2457,6 +2457,7 @@ export class Deployer {
     // what §16 later moves. The beneficiary is the borrower.
     const positionOut = new Constr(0, [
       [ACTIVE.collateral.policyId, ACTIVE.collateral.assetName],
+      new Constr(0, [0n, 1n]),
       new Constr(0, [0n, 1n]),
       ORDER.minExecutionAmount,
       ORDER.maxSlippage,
@@ -2704,6 +2705,7 @@ export class Deployer {
     const positionOut = new Constr(0, [
       [ACTIVE.collateral.policyId, ACTIVE.collateral.assetName],
       new Constr(0, [0n, 1n]),
+      new Constr(0, [0n, 1n]),
       ORDER.minExecutionAmount,
       ORDER.maxSlippage,
       addressData(walletAddr),
@@ -2907,7 +2909,7 @@ export class Deployer {
     const pdatum = Data.from(position.datum!) as Constr<any>;
     const remainDatum = new Constr(0, [
       [target.positionNft.policyId, positionNftName + Buffer.from("OWN").toString("hex")],
-      pdatum.fields[4],
+      pdatum.fields[5],
       ACTIVE.collectorReward,
     ]);
     const positionStake = getAddressDetails(position.address).stakeCredential;
@@ -3103,9 +3105,12 @@ export class Deployer {
   async closeAsync(takeProfit = false): Promise<void> {
     const record = `${OUT_FOLDER}/${NETWORK.toLowerCase()}.json`;
     const rec = await Bun.file(record).json();
-    // §10.2.1 closes any loan that carries no claim, however it was opened.
+    // §10.2.1 closes any loan that carries no claim, however it was opened, and
+    // `liveLoan` is what says which one. The arm used to require §8 to have run
+    // first — a leftover from when the only loan it could reach came from an
+    // asynchronous fill, and a precondition on the record rather than on the
+    // chain: a synchronously filled loan closes here just as well.
     const target = await this.liveLoan(rec, Deployer.unclaimed);
-    if (!target || !rec.settle) throw new Error("no settled async loan recorded");
     const nft: TupleAsset = [rec.protocolNft.policyId, rec.protocolNft.assetName];
     const v = ours();
     const venue = minswapV2For(NETWORK);
@@ -3155,7 +3160,7 @@ export class Deployer {
     const initialIndex = ld.fields[3] as bigint;
     if ((ld.fields[4] as Constr<any>).index !== 1) throw new Error("this loan already carries a claim");
     const pdatum = Data.from(position.datum!) as Constr<any>;
-    const maxSlippage = pdatum.fields[3] as bigint;
+    const maxSlippage = pdatum.fields[4] as bigint;
     const { from, to, startMs } = this.window();
     const st = this.poolState(pool, startMs, ACTIVE);
     const debt = (loanAmount * st.outIndex) / initialIndex;
@@ -3214,14 +3219,21 @@ export class Deployer {
     const marketRef = refIdx(market);
 
     if (takeProfit) {
-      const tp = pdatum.fields[1] as Constr<any>;
-      const [tpNum, tpDen] = tp.fields as [bigint, bigint];
+      const [tpNum, tpDen] = (pdatum.fields[1] as Constr<any>).fields as [bigint, bigint];
+      const [slNum, slDen] = (pdatum.fields[2] as Constr<any>).fields as [bigint, bigint];
       const price = oracle.quotes[0]!;
-      // The same comparison the validator makes, cross-multiplied so the two
+      // The same comparisons the validator makes, cross-multiplied so the two
       // agree exactly: a division here would round where Plutus does not.
-      const reached = price.numerator * tpDen >= tpNum * price.denominator;
-      console.log(`  oracle ${price.numerator}/${price.denominator}, take_profit ${tpNum}/${tpDen}` +
-        ` -> ${tpNum === 0n ? "DISABLED" : reached ? "reached" : "NOT reached"}`);
+      const tpReached = tpNum > 0n && price.numerator * tpDen >= tpNum * price.denominator;
+      const slReached = slNum > 0n && price.numerator * slDen <= slNum * price.denominator;
+      const state = (n: bigint, hit: boolean) =>
+        n === 0n ? "DISABLED" : hit ? "reached" : "NOT reached";
+      console.log(`  oracle ${price.numerator}/${price.denominator}`
+        + `, take_profit ${tpNum}/${tpDen} -> ${state(tpNum, tpReached)}`
+        + `, stop_loss ${slNum}/${slDen} -> ${state(slNum, slReached)}`);
+      if (!tpReached && !slReached) {
+        throw new Error("neither standing instruction is reached; §10.2.1 needs the owner ticket");
+      }
       // Two separate facts, and only the first is what the validator acts on.
       const ownerUnit = toUnit(target.positionNft.policyId, positionOwnerName);
       const carried = all.some((u) => (u.assets[ownerUnit] ?? 0n) > 0n);
@@ -3422,7 +3434,7 @@ export class Deployer {
     const marketUnit = toUnit(rec[ACTIVE_KEY].marketNft.policyId, rec[ACTIVE_KEY].marketNft.assetName);
     const pdatum = Data.from(position.datum!) as Constr<any>;
     const remainDatum = new Constr(0, [
-      [target.positionNft.policyId, positionOwnerName], pdatum.fields[4], ACTIVE.collectorReward,
+      [target.positionNft.policyId, positionOwnerName], pdatum.fields[5], ACTIVE.collectorReward,
     ]);
     const positionStake = getAddressDetails(position.address).stakeCredential;
 
@@ -3534,7 +3546,12 @@ export class Deployer {
   /// the standing instruction the take-profit route reads, so being able to
   /// place it above and then below the oracle's rate is what shows the gate
   /// working in both directions.
-  async modifyPosition(tpNum = 5n, tpDen = 1n): Promise<void> {
+  async modifyPosition(
+    tpNum = 5n,
+    tpDen = 1n,
+    slNum?: bigint,
+    slDen = 1n,
+  ): Promise<void> {
     const record = `${OUT_FOLDER}/${NETWORK.toLowerCase()}.json`;
     const rec = await Bun.file(record).json();
     // §16 moves a position's own take-profit price, and every position has one
@@ -3557,12 +3574,16 @@ export class Deployer {
     const funding = await resolve(fundingRow.transaction_id, fundingRow.output_index);
 
     const pd = Data.from(position.datum!) as Constr<any>;
-    // §16.2.6, §16.2.7 — a take-profit price is set and the execution floor is
-    // raised; the other three fields are copied.
+    // §16.2.6, §16.2.7 — the two standing instructions are set and the execution
+    // floor is raised; the other three fields are copied. A stop-loss left
+    // unnamed keeps whatever the position already carried.
+    const sl = slNum === undefined
+      ? pd.fields[2] as Constr<any>
+      : new Constr(0, [slNum, slDen]);
     const out = new Constr(0, [
-      pd.fields[0], new Constr(0, [tpNum, tpDen]),
-      (pd.fields[2] as bigint) + 1_000_000n,
-      pd.fields[3], pd.fields[4],
+      pd.fields[0], new Constr(0, [tpNum, tpDen]), sl,
+      (pd.fields[3] as bigint) + 1_000_000n,
+      pd.fields[4], pd.fields[5],
     ]);
 
     const sortedRefs = [registry, positionRef].sort((a, b) =>
@@ -3577,7 +3598,8 @@ export class Deployer {
       [new Constr(2, [positionIn!, ownerIn!, 0n])], refIdx(registry),
     ]));
     console.log(`  take_profit ${(pd.fields[1] as Constr<any>).fields.join("/")} -> ${tpNum}/${tpDen}` +
-      `, min_execution ${pd.fields[2]} -> ${(pd.fields[2] as bigint) + 1_000_000n}`);
+      `, stop_loss ${(pd.fields[2] as Constr<any>).fields.join("/")} -> ${sl.fields.join("/")}` +
+      `, min_execution ${pd.fields[3]} -> ${(pd.fields[3] as bigint) + 1_000_000n}`);
     const { from, to } = this.window();
     const refBytes = sortedRefs.reduce((n, u) => n + (u.scriptRef ? u.scriptRef.script.length / 2 : 0), 0);
 
@@ -3696,7 +3718,7 @@ export class Deployer {
     const pdatum = Data.from(position.datum!) as Constr<any>;
     const remainDatum = new Constr(0, [
       [target.positionNft.policyId, positionNftName + Buffer.from("OWN").toString("hex")],
-      pdatum.fields[4], ACTIVE.collectorReward,
+      pdatum.fields[5], ACTIVE.collectorReward,
     ]);
     const positionStake = getAddressDetails(position.address).stakeCredential;
 

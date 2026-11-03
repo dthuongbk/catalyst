@@ -1,11 +1,11 @@
 //// Datums and redeemers.
 ////
-//// Every datum here is an append-only extension of its deployed counterpart:
-//// the first eight fields of `PoolDatum`, four of `LoanDatum`, fourteen of
-//// `MarketDatum`, seven of `OrderDatum` and three of `PositionDatum` keep their
-//// deployed name, type **and position**. Datums decode positionally, so a field
-//// inserted anywhere but the end silently rebinds every field after it — biz
-//// spec §5 rule 13a.
+//// Datums decode positionally, so a field inserted anywhere but the end
+//// silently rebinds every field after it — biz spec §5 rule 13a. Fields are
+//// therefore appended, with one exception: `stop_loss_price` sits right after
+//// `take_profit_price` in `OrderDatum` and `PositionDatum`. That is safe only
+//// because the deployment in `deployments/preprod.json` started from a fresh
+//// registry, so no live UTxO carries a datum from before it.
 
 use cardano/address.{Address, StakeCredential}
 use cardano/assets.{AssetName}
@@ -26,6 +26,7 @@ pub type OrderDatum {
   short_amount: Int,
   open_limit_price: PRational,
   take_profit_price: PRational,
+  stop_loss_price: PRational,
   min_liquidation_threshold: LiquidationThreshold,
   min_execution_amount: Int,
   max_slippage: Basis,
@@ -39,6 +40,7 @@ pub type OrderDatum {
 pub type PositionDatum {
   long_token: TupleAsset,
   take_profit_price: PRational,
+  stop_loss_price: PRational,
   min_execution_amount: Int,
   max_slippage: Basis,
   beneficiary: Address,

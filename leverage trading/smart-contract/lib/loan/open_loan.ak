@@ -371,6 +371,7 @@ test async_fill_on_a_token_market() {
       short_amount,
       open_limit_price: PRational { numerator: 1400, denominator: 1 },
       take_profit_price: PRational { numerator: 0, denominator: 1 },
+      stop_loss_price: PRational { numerator: 0, denominator: 1 },
       min_liquidation_threshold: 8000,
       min_execution_amount: 100_000_000,
       max_slippage: 300,

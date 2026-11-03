@@ -47,6 +47,7 @@ test datum_arities_are_the_deployed_ones() {
       short_amount: 300_000_000,
       open_limit_price: PRational(4, 1),
       take_profit_price: PRational(0, 1),
+      stop_loss_price: PRational(0, 1),
       min_liquidation_threshold: 8000,
       min_execution_amount: 100_000_000,
       max_slippage: 300,
@@ -60,6 +61,7 @@ test datum_arities_are_the_deployed_ones() {
     PositionDatum {
       long_token: t_asset(),
       take_profit_price: PRational(2, 1),
+      stop_loss_price: PRational(0, 1),
       min_execution_amount: 100_000_000,
       max_slippage: 300,
       beneficiary: t_addr(),
@@ -102,12 +104,11 @@ test datum_arities_are_the_deployed_ones() {
     }
   let cases =
     [
-      // The five §5 rule 13a names, with the counts that note gives:
-      // eight of `PoolDatum`, four of `LoanDatum`, fourteen of `MarketDatum`,
-      // seven of `OrderDatum` and three of `PositionDatum` are the *deployed*
-      // prefixes; these are the full arities this version carries.
-      ("OrderDatum", order, 13),
-      ("PositionDatum", position, 5),
+      // The arities of the preprod redeployment. `stop_loss_price` sits right
+      // after `take_profit_price` in `OrderDatum` and `PositionDatum`, so every
+      // field after it moved up by one against the Milestone 2 layout.
+      ("OrderDatum", order, 14),
+      ("PositionDatum", position, 6),
       ("LoanDatum", loan, 5),
       ("PoolDatum", pool, 9),
       ("RemainDatum", remain, 3),
@@ -137,6 +138,7 @@ test datum_fields_sit_where_the_deployed_contract_reads_them() {
       short_amount: 300_000_000,
       open_limit_price: PRational(4, 1),
       take_profit_price: PRational(0, 1),
+      stop_loss_price: PRational(0, 1),
       min_liquidation_threshold: 8000,
       min_execution_amount: 100_000_000,
       max_slippage: 300,
@@ -148,8 +150,8 @@ test datum_fields_sit_where_the_deployed_contract_reads_them() {
     }
   let Pair(_index, fields) = builtin.un_constr_data(order)
   expect Some(short_amount) = list.at(fields, 2)
-  expect Some(min_liquidation_threshold) = list.at(fields, 5)
-  expect Some(fee_reserve) = list.at(fields, 12)
+  expect Some(min_liquidation_threshold) = list.at(fields, 6)
+  expect Some(fee_reserve) = list.at(fields, 13)
   and {
     (builtin.un_i_data(short_amount) == 300_000_000)?,
     (builtin.un_i_data(min_liquidation_threshold) == 8000)?,

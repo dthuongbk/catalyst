@@ -70,6 +70,8 @@ pub fn validate(
   // neither a loan nor an order, so §5 rule 3 could pin none.
   expect position_out_datum.take_profit_price.numerator >= 0
   expect position_out_datum.take_profit_price.denominator > 0
+  expect position_out_datum.stop_loss_price.numerator >= 0
+  expect position_out_datum.stop_loss_price.denominator > 0
   expect
     position_out_datum.min_execution_amount >= position_in_datum.min_execution_amount
 

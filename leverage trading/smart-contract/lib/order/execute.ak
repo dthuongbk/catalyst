@@ -152,6 +152,7 @@ pub fn validate(
       PositionDatum {
         long_token,
         take_profit_price: order.take_profit_price,
+        stop_loss_price: order.stop_loss_price,
         min_execution_amount,
         max_slippage: order.max_slippage,
         beneficiary: order.beneficiary,

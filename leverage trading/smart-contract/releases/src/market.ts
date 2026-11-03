@@ -264,6 +264,7 @@ export function orderDatum(
     ORDER.shortAmount,
     new Constr(0, [limitPriceNum, ORDER.openLimitPriceDen]),
     new Constr(0, [0n, 1n]),                                      // take_profit_price
+    new Constr(0, [0n, 1n]),                                      // stop_loss_price
     ORDER.minLiquidationThreshold,
     ORDER.minExecutionAmount,
     ORDER.maxSlippage,

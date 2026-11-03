@@ -338,6 +338,7 @@ fn t_position_out() -> Output {
       PositionDatum {
         long_token: t_fbtc,
         take_profit_price: PRational { numerator: 0, denominator: 1 },
+        stop_loss_price: PRational { numerator: 0, denominator: 1 },
         min_execution_amount: 100_000_000,
         max_slippage: 300,
         beneficiary: t_addr(t_position),

@@ -394,15 +394,22 @@ pub fn market_at(
 
 /// `pool` by `PoolNFT` at policy `config_pool_skh` with
 /// `PoolNFT.asset_name == MarketNFT.asset_name`, quantity 1, at
-/// `Script(pool_skh)` — §5 rule 3 — and fresh per §5 rule 6.
+/// `Script(pool_skh)` — §5 rule 3.
+///
+/// §5 rule 6's freshness bound is **not** applied. §10.2.1 reads the pool as a
+/// reference input and so cannot advance its index, and the bound turned a pool
+/// nobody had spent for an hour into a position nobody could close — the arm it
+/// blocks is the one a trader most needs when the market has gone quiet. What it
+/// bought was an upper bound on how understated `debt_at(expiry)` can be, and the
+/// claim's own `floor` already has to clear `health_floor` at that debt; a stale
+/// index makes that floor lower, not absent. `max_index_staleness` stays in
+/// `MarketDatum` and keeps its §1.3 bounds, unread.
 pub fn pool_ref_at(
   reference_inputs: List<Input>,
   idx: Int,
   pool_skh: ScriptHash,
   config_pool_skh: ScriptHash,
   market_nft_name: AssetName,
-  max_index_staleness: Int,
-  tx_start: Int,
 ) -> PoolDatum {
   expect idx != -1
   let Input {
@@ -418,7 +425,6 @@ pub fn pool_ref_at(
   expect tokens.contains_nft(value, (config_pool_skh, market_nft_name))
   expect InlineDatum(datum) = datum
   expect pool: PoolDatum = datum
-  expect tx_start - pool.interest_time <= max_index_staleness
   pool
 }
 
