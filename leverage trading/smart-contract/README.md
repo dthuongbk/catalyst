@@ -1,0 +1,68 @@
+# Leverage order book on Cardano
+
+Aiken validators for a leverage order book with per-DEX adapters, plus the tooling
+that deployed them and the record of what that deployment did on chain.
+
+## Read this first
+
+**[`DEPLOYMENT.md`](DEPLOYMENT.md)** is the authoritative account of the live
+preprod deployment: every script hash, every parameter, every transaction in the
+order it ran, and — section 4 — the shape of each one, purpose by purpose, index by
+index. A transaction builder should be written against that section, not against
+the validators alone: the shapes there are the ones the validators accepted on
+chain, and section 6 lists the eleven mistakes that each cost a rejected
+transaction here.
+
+Section 8 is the one part of it that has not run: it takes `fee_reserve` from
+33 ADA to 19.5 by lowering five market **parameters**, so no validator source
+moves and every hash in section 1 stands. It also derives the two floors under
+that number and shows why 10 ADA is below both.
+
+`deployments/preprod.json` is the same deployment in machine-readable form — the
+registry, the reference-script out-refs, and the NFT names of everything still
+alive. `deployments/preprod-transactions.jsonl` is the append-only trail, one line
+per submission.
+
+## Layout
+
+| Path | |
+|---|---|
+| `validators/` | the eleven validators, one file each |
+| `lib/` | the arms themselves — `loan/`, `order/`, `pool/`, `position/`, `protocol/`, `adapter/` |
+| `releases/` | the deployment tooling: one command per arm, see [`releases/README.md`](releases/README.md) |
+| `deployments/` | what is deployed, and the trail of how it got there |
+| `TESTREPORT.md` | the test suite: coverage, method, and what it cannot see |
+| `protocol_script.json` | daken's one-shot minting policy, used as `nft_mint` for the ProtocolNFT and AdminNFT |
+
+Three of the validators are one lifecycle across three hosts — `loan` carries
+opening, `loan_repay` the repayment arms, `loan_close` the closing arms — so a
+transaction that spends a loan UTxO cites two reference scripts. `DEPLOYMENT.md`
+section 1 says which.
+
+## Build and test
+
+```bash
+aiken check
+```
+
+287 tests across 32 modules. **[`TESTREPORT.md`](TESTREPORT.md)** is the account
+of them: what a `fail` block does and does not prove, why 193 of them live in
+`lib/tests/` rather than beside their subject, coverage per module, and —
+section 5 — the six things this suite is blind to, which is the half of the
+picture [`DEPLOYMENT.md`](DEPLOYMENT.md) carries.
+
+```bash
+aiken build -t silent
+```
+
+`-t silent` is not optional when you care about the size of a validator: tracing
+adds about 64% and the `maxTxSize` of 16 384 bytes is reached with it on.
+
+To confirm that the deployed hashes still come from this source:
+
+```bash
+cd releases && bun run index.ts --verify
+```
+
+It rebuilds all eleven from `plutus.json` and compares against
+`deployments/preprod.json`. It submits nothing.
