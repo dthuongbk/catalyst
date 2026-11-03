@@ -1,0 +1,5 @@
+artifacts/
+build/
+plutus.json
+releases/.env
+releases/node_modules/

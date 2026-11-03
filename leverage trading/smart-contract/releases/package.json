@@ -1,0 +1,16 @@
+{
+  "name": "releases",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "deploy": "bun run index.ts --deploy",
+    "show": "bun run index.ts --show"
+  },
+  "devDependencies": { "@types/bun": "latest" },
+  "peerDependencies": { "typescript": "^5" },
+  "dependencies": {
+    "@danogo-js/sdk": "^0.4.16",
+    "@lucid-evolution/lucid": "^0.4.29"
+  }
+}

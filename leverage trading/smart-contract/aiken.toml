@@ -1,0 +1,23 @@
+name = "danogo-io/tic-30-smart-contract"
+version = "0.0.0"
+compiler = "v1.1.17"
+plutus = "v3"
+license = "Apache-2.0"
+description = "Leverage order book with per-DEX adapters — TIC-30"
+
+[repository]
+user = "danogo-io"
+project = "tic-30-smart-contract"
+platform = "github"
+
+[[dependencies]]
+name = "aiken-lang/stdlib"
+version = "v3.0.0"
+source = "github"
+
+[[dependencies]]
+name = "danogo2023/daken"
+version = "v2.3.5"
+source = "github"
+
+[config]

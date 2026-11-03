@@ -1,0 +1,426 @@
+{
+  "network": "Preprod",
+  "protocolNft": {
+    "policyId": "bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14",
+    "assetName": "70f48d8dedd769ada7c44fdb4774b6c1c07d748bdc042ee5b955636080fea212"
+  },
+  "adminNft": {
+    "policyId": "bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14",
+    "assetName": "459e8ad7efb9369a7fffab114adf7d37f7a9e0a6864b7baeb0165901d4f2dffd"
+  },
+  "protocolConfigAddress": "addr_test1wqex8q3mzs62tk3dd79tjdpul4sunmunhtyk23yyn9z35as7099cg",
+  "registry": {
+    "poolSkh": "e20d719a11624989cba3ff7512924d565b2e6887c8b62f55e2da615c",
+    "loanSkh": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+    "loanRepaySkh": "01ab270ea1a08e4f4d9c0e3cea0976139f9f8b0a0e23552848e31d2a",
+    "loanCloseSkh": "e52dfbe9ecbe7a621fae8f6d0540df9086924d4b9a5650d89aab595b",
+    "configPoolSkh": "1858b5e3a3722348e1334fa3226edc8ef179a17571b0ced4ff08ec9a",
+    "orderSkh": "19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d",
+    "positionSkh": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+    "cancelSkh": "d2a000949ab15fa90dc12dc29d75c02b86778fecc444b0542c35b392",
+    "adminNft": [
+      "bc2d3b7cf1009c788b1daf2208a38026ab20d7f8209d896ad1a09c14",
+      "459e8ad7efb9369a7fffab114adf7d37f7a9e0a6864b7baeb0165901d4f2dffd"
+    ],
+    "oracleSkh": "3158c9a7ba551eb3b6b9aa578e7995dec5ce34e272fde0bda76b46d1"
+  },
+  "genesisTx": "7e97f3dd5014796cb7f17bc334ac0f4f7e3acb2562e1e2644cf0b0a8a18424ce",
+  "referenceScripts": {
+    "protocol_config": "2844229dbeb9feb8f46402d1fcd5f165e48c4f7bb3d2a28b0ec765da85000952",
+    "market_param": "cf1b0a305acb82abca7c90a0f3d990f533a4398de50e65c4b8a345f9ffc5d6c4",
+    "pool": "7859839e0c98e6ed734e8b650d630bef3fcc6632b9ecb873267ee6b86c1891aa",
+    "loan": "27c561c66579193b4be89dae4a70ca51caaa31f911355262b8d8ab5778501e19",
+    "loan_repay": "76b48c28d3944967e7fecfd3295801940a7ac649d39a55c1b0ac6f61d04a2b72",
+    "loan_close": "593c9d93d05682f343e674a5b1afc3f0918b4bba8b209b4ab33a1a3645264637",
+    "order": "597566d0194c68ac2c56b9b797e0adf1c08b13d410a4a1de0ba429d2405fbd61",
+    "position": "092b18ba1756617e2a1418a8ef9d3e6d731749ec992139320378d7fb2915b9cb",
+    "cancel": "005988ce0c233dbedca622a30886583d98e7634585ac53ba19b9c438e8fc3071",
+    "adapter_sync_generic": "2fae09a684e5b299a9522b119cc0299f23045085ed242279d5a957dac72821dd",
+    "adapter_minswap": "db68dcc78cfce730f0a3be8a3713d6d15f2b26017dcf0af72d4f59c702c9de48"
+  },
+  "referenceScriptHost": "addr_test1qqv5l5k8zax8agy84qanqr44tr4padeescstfh9pexxktapdzjk7wvmnvwrgara7yay07vnhh78chyvla8yeuw5ltxysx2qgkv",
+  "scripts": {
+    "protocol_config": {
+      "scriptHash": "3263823b1434a5da2d6f8ab9343cfd61c9ef93bac965448499451a76",
+      "sizeBytes": 4029,
+      "address": "addr_test1wqex8q3mzs62tk3dd79tjdpul4sunmunhtyk23yyn9z35as7099cg",
+      "rewardAddress": "stake_test17qex8q3mzs62tk3dd79tjdpul4sunmunhtyk23yyn9z35as78ma0z"
+    },
+    "market_param": {
+      "scriptHash": "1858b5e3a3722348e1334fa3226edc8ef179a17571b0ced4ff08ec9a",
+      "sizeBytes": 6115,
+      "address": "addr_test1wqv93d0r5dezxj8pxd86xgnwmj80z7dpw4cmpnk5luywexsd4z5dq",
+      "rewardAddress": "stake_test17qv93d0r5dezxj8pxd86xgnwmj80z7dpw4cmpnk5luywexsdauv62"
+    },
+    "pool": {
+      "scriptHash": "e20d719a11624989cba3ff7512924d565b2e6887c8b62f55e2da615c",
+      "sizeBytes": 12566,
+      "address": "addr_test1wr3q6uv6z93ynzwt50lh2y5jf4t9ktngslytvt64utdxzhqnzrqvr",
+      "rewardAddress": "stake_test17r3q6uv6z93ynzwt50lh2y5jf4t9ktngslytvt64utdxzhqn2acmf"
+    },
+    "loan": {
+      "scriptHash": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "sizeBytes": 14556,
+      "address": "addr_test1wp4usl37nqww3qjfhcyrlge83vayp78l47jrktshz0sdleq5zlzxf",
+      "rewardAddress": "stake_test17p4usl37nqww3qjfhcyrlge83vayp78l47jrktshz0sdleq52p63r"
+    },
+    "loan_repay": {
+      "scriptHash": "01ab270ea1a08e4f4d9c0e3cea0976139f9f8b0a0e23552848e31d2a",
+      "sizeBytes": 13123,
+      "address": "addr_test1wqq6kfcw5xsgun6dns8re6sfwcfel8utpg8zx4fgfr3362s3e3nqt",
+      "rewardAddress": "stake_test17qq6kfcw5xsgun6dns8re6sfwcfel8utpg8zx4fgfr3362s330thp"
+    },
+    "loan_close": {
+      "scriptHash": "e52dfbe9ecbe7a621fae8f6d0540df9086924d4b9a5650d89aab595b",
+      "sizeBytes": 14261,
+      "address": "addr_test1wrjjm7lfajl85csl468k6p2qm7ggdyjdfwd9v5xcn244jkcxnq9kp",
+      "rewardAddress": "stake_test17rjjm7lfajl85csl468k6p2qm7ggdyjdfwd9v5xcn244jkcxm7apt"
+    },
+    "order": {
+      "scriptHash": "19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d",
+      "sizeBytes": 13214,
+      "address": "addr_test1wqvamj3sf20jy9kacg7n6qm9tj7gu4x7l7q4r64q9r775hgf3umgf",
+      "rewardAddress": "stake_test17qvamj3sf20jy9kacg7n6qm9tj7gu4x7l7q4r64q9r775hgfezrlr"
+    },
+    "position": {
+      "scriptHash": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+      "sizeBytes": 6947,
+      "address": "addr_test1wqcwe7l0at478jlsklv44fggn93x7k48cm4ff5ntsqjeqzce53z8j",
+      "rewardAddress": "stake_test17qcwe7l0at478jlsklv44fggn93x7k48cm4ff5ntsqjeqzceu06sc"
+    },
+    "cancel": {
+      "scriptHash": "d2a000949ab15fa90dc12dc29d75c02b86778fecc444b0542c35b392",
+      "sizeBytes": 2710,
+      "address": "addr_test1wrf2qqy5n2c4l2gdcyku98t4cq4cvau0anzyfvz59s6m8yshwv8c9",
+      "rewardAddress": "stake_test17rf2qqy5n2c4l2gdcyku98t4cq4cvau0anzyfvz59s6m8yshxjl00"
+    },
+    "adapter_sync_generic": {
+      "scriptHash": "3fbf5841a1f19dd7d525236712f7d75e406927d70b5e71e5ac9969b3",
+      "sizeBytes": 3326,
+      "address": "addr_test1wqlm7kzp58cem474y53kwyhh6a0yq6f86u94uu094jvknvcuzdm9l",
+      "rewardAddress": "stake_test17qlm7kzp58cem474y53kwyhh6a0yq6f86u94uu094jvknvcu2nrj4"
+    },
+    "adapter_minswap": {
+      "scriptHash": "e25c70a0a4d1395315ed4066da4391511e17092617adb1b48ffc391b",
+      "sizeBytes": 8558,
+      "address": "addr_test1wr39cu9q5ngnj5c4a4qxdkjrj9g3u9cfyct6mvd53l7rjxcgk7cnj",
+      "rewardAddress": "stake_test17r39cu9q5ngnj5c4a4qxdkjrj9g3u9cfyct6mvd53l7rjxcg7qqyc"
+    }
+  },
+  "minswapV2": {
+    "orderSkh": "da9525463841173ad1230b1d5a1b5d0a3116bbdeb4412327148a1b7a",
+    "poolSkh": "d6ba9b7509eac866288ff5072d2a18205ac56f744bc82dcd808cb8fe",
+    "poolNftPolicy": "d6aae2059baee188f74917493cf7637e679cd219bdfbbf4dcbeb1d0b"
+  },
+  "stakeRegistered": [
+    "stake_test17r3q6uv6z93ynzwt50lh2y5jf4t9ktngslytvt64utdxzhqn2acmf",
+    "stake_test17p4usl37nqww3qjfhcyrlge83vayp78l47jrktshz0sdleq52p63r",
+    "stake_test17qq6kfcw5xsgun6dns8re6sfwcfel8utpg8zx4fgfr3362s330thp",
+    "stake_test17rjjm7lfajl85csl468k6p2qm7ggdyjdfwd9v5xcn244jkcxm7apt",
+    "stake_test17qvamj3sf20jy9kacg7n6qm9tj7gu4x7l7q4r64q9r775hgfezrlr",
+    "stake_test17qcwe7l0at478jlsklv44fggn93x7k48cm4ff5ntsqjeqzceu06sc",
+    "stake_test17rf2qqy5n2c4l2gdcyku98t4cq4cvau0anzyfvz59s6m8yshxjl00",
+    "stake_test17qlm7kzp58cem474y53kwyhh6a0yq6f86u94uu094jvknvcu2nrj4",
+    "stake_test17pkqldsxw7682ferhsk7r08qzeshctsjpsjpdwr3ld2lnpswr328f",
+    "stake_test17r39cu9q5ngnj5c4a4qxdkjrj9g3u9cfyct6mvd53l7rjxcg7qqyc"
+  ],
+  "stakeRegistrationTx": "b7433e8b50c65248ed03f77b95d9f30dbf92555e551f4ce9bb8e43c3710431a9",
+  "adaptersWhitelisted": {
+    "tx": "44a66ee6aa2e0f97468a7c353f20359d9a8cad5e9b093927d00dda0194bd6203",
+    "adapter_sync_generic": "3fbf5841a1f19dd7d525236712f7d75e406927d70b5e71e5ac9969b3",
+    "adapter_minswap": "e25c70a0a4d1395315ed4066da4391511e17092617adb1b48ffc391b"
+  },
+  "consolidated": {
+    "tx": "1eebf2fd472f3157a3e75d184e37995574175540142f7a7985f197a270c2aa3c",
+    "collapsed": 2,
+    "bags": 1
+  },
+  "market": {
+    "tx": "c0848a5a58b50f3f289c6154d90ea17f5247c8b443317bd546b01368127a42a9",
+    "marketNft": {
+      "policyId": "1858b5e3a3722348e1334fa3226edc8ef179a17571b0ced4ff08ec9a",
+      "assetName": "3cf2d4ad7f6e90b0b200d083c9386608513f201d3c16f8b866571a64"
+    },
+    "marketAddress": "addr_test1wqv93d0r5dezxj8pxd86xgnwmj80z7dpw4cmpnk5luywexsd4z5dq",
+    "poolAddress": "addr_test1wr3q6uv6z93ynzwt50lh2y5jf4t9ktngslytvt64utdxzhqnzrqvr",
+    "supplyToken": "ada",
+    "collateral": "834a15101873b4e1ddfaa830df46792913995d8738dcde34eda27905.665553444d",
+    "supply": {
+      "tx": "c5fe7efa27251d850b4b2519ae2bd05dba6080d395109836ea8f1c86afd02ec8",
+      "amount": "100000000",
+      "dtoken": "99999997"
+    }
+  },
+  "marketFusdm": {
+    "tx": "8203be9ba6b7a861b281f6e2db7e7cd5fba28c518cf8dd6a552eecc83d5b2971",
+    "marketNft": {
+      "policyId": "1858b5e3a3722348e1334fa3226edc8ef179a17571b0ced4ff08ec9a",
+      "assetName": "d244f30ddfb30e2bee8b85fb3bc1d4601e71a51fbaf177ad60d3cda9"
+    },
+    "marketAddress": "addr_test1wqv93d0r5dezxj8pxd86xgnwmj80z7dpw4cmpnk5luywexsd4z5dq",
+    "poolAddress": "addr_test1wr3q6uv6z93ynzwt50lh2y5jf4t9ktngslytvt64utdxzhqnzrqvr",
+    "supplyToken": "834a15101873b4e1ddfaa830df46792913995d8738dcde34eda27905.665553444d",
+    "collateral": "007c4fc75b7662fc735177aa714da9d1b06af5644df199fef39e5fc1.66425443",
+    "supply": {
+      "tx": "73d6291fa9e5a750e3ad82b929c558db9fe6a560e1027bca2fcb30673219d4e4",
+      "amount": "200000000000000",
+      "dtoken": "200000000000000"
+    }
+  },
+  "marketFbtc": {
+    "tx": "a8ea5df73a3ccaae5120bf1ac8fc9a6fe7a3d6b7a22ec24705def2f4a1ebada5",
+    "marketNft": {
+      "policyId": "1858b5e3a3722348e1334fa3226edc8ef179a17571b0ced4ff08ec9a",
+      "assetName": "d41cb093d0cc0e9c21f4adb0aeb381699d2444dfaf4637f9d2954aad"
+    },
+    "marketAddress": "addr_test1wqv93d0r5dezxj8pxd86xgnwmj80z7dpw4cmpnk5luywexsd4z5dq",
+    "poolAddress": "addr_test1wr3q6uv6z93ynzwt50lh2y5jf4t9ktngslytvt64utdxzhqnzrqvr",
+    "supplyToken": "007c4fc75b7662fc735177aa714da9d1b06af5644df199fef39e5fc1.66425443",
+    "collateral": "834a15101873b4e1ddfaa830df46792913995d8738dcde34eda27905.665553444d",
+    "supply": {
+      "tx": "ffd97eef071606227274d11f89d1405146c88826cc678c7417a22471c8bda7f5",
+      "amount": "100000000",
+      "dtoken": "100000000"
+    }
+  },
+  "openDirectAsync": {
+    "tx": "1b8fec515b4d660207b74ccf5c03a2cdcbdc5c01c5278f4e6c9d4eb297fe65b8",
+    "market": "fusdm",
+    "loanAmount": "150000000",
+    "sold": "298500000",
+    "floor": "214114",
+    "expiry": "1788516382000",
+    "bindingNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "d191c362c4574f9c3b12615fa59fbedbc05a527f6ef4f801c489d98a424e44"
+    },
+    "loanNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "d244f30ddfb30e2bee8b85fb3bc1d4601e71a51fbaf177ad60d3cda9"
+    },
+    "loanOwnerNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "d191c362c4574f9c3b12615fa59fbedbc05a527f6ef4f801c489d98a"
+    },
+    "positionNft": {
+      "policyId": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+      "assetName": "d191c362c4574f9c3b12615fa59fbedbc05a527f6ef4f801c489d98a"
+    },
+    "venueOrderAddress": "addr_test1zrdf2f2x8pq3wwk3yv936ksmt59rz94mm66yzge8zj9pk73dzjk7wvmnvwrgara7yay07vnhh78chyvla8yeuw5ltxys0ejaxw"
+  },
+  "fill": {
+    "market": "fusdm",
+    "loanNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "d244f30ddfb30e2bee8b85fb3bc1d4601e71a51fbaf177ad60d3cda9"
+    },
+    "loanOwnerNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "0a20b0f81847976e171ef5295fb4a09d328af14a9b8641f3a273ad1b"
+    },
+    "positionNft": {
+      "policyId": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+      "assetName": "0a20b0f81847976e171ef5295fb4a09d328af14a9b8641f3a273ad1b"
+    },
+    "bindingNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "0a20b0f81847976e171ef5295fb4a09d328af14a9b8641f3a273ad1b424e44"
+    }
+  },
+  "settle": {
+    "tx": "28ee6fa1b722e793499716762e702c90e62b676e4b33754003322f90f30f864c",
+    "collateral": "220732",
+    "floor": "214110"
+  },
+  "order": {
+    "tx": "7fbbf32207bfc043a736f79fe6ceb2a5422a3ab31c817684f4414cce49a49f40",
+    "orderNft": {
+      "policyId": "19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d",
+      "assetName": "0577f9988afb27f8868aaf6f4dd9464fb507e61d738c3a41763fdefe"
+    },
+    "ownerNft": {
+      "policyId": "19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d",
+      "assetName": "0577f9988afb27f8868aaf6f4dd9464fb507e61d738c3a41763fdefe4f574e"
+    },
+    "address": "addr_test1zqvamj3sf20jy9kacg7n6qm9tj7gu4x7l7q4r64q9r775hfdzjk7wvmnvwrgara7yay07vnhh78chyvla8yeuw5ltxyst7yvna",
+    "lovelace": "38000000",
+    "margin": "150000000",
+    "shortAmount": "300000000",
+    "isMarket": true
+  },
+  "fillSync": {
+    "tx": "757bdf025cda5f0e5ffd779695666f564e93b49424fdbbf653643cff71d72bb5",
+    "loanAmount": "150000000",
+    "collateral": "213215",
+    "limitPrice": "1400/1",
+    "loanNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "d244f30ddfb30e2bee8b85fb3bc1d4601e71a51fbaf177ad60d3cda9"
+    },
+    "loanOwnerNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "13a79657a1bcc8880728897b29573aac85e7554e727c992c5befb274"
+    },
+    "positionNft": {
+      "policyId": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+      "assetName": "13a79657a1bcc8880728897b29573aac85e7554e727c992c5befb274"
+    }
+  },
+  "orderCancelled": {
+    "tx": "c76e7ebaf860e4adea39cfe4c2cb9bec460ca5d4338c201f63d45dc397461098",
+    "released": [
+      "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b13a79657a1bcc8880728897b29573aac85e7554e727c992c5befb2744f574e"
+    ]
+  },
+  "repay": {
+    "tx": "b0106e78cc71c31644d4c52b13613eaaa9d4844a96f89b7479f37173d87e6f2a",
+    "debt": "150000024",
+    "collateralReturned": "213215"
+  },
+  "openDirect": {
+    "tx": "cc071be7937affc3b3089aba7aae6a4787685619edaaa9d2c579de85dd299746",
+    "market": "fusdm",
+    "loanAmount": "1081325885",
+    "collateral": "1000000",
+    "proceeds": "1070512626",
+    "oraclePrice": "23914505271272/17692727485",
+    "loanNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "d244f30ddfb30e2bee8b85fb3bc1d4601e71a51fbaf177ad60d3cda9"
+    },
+    "loanOwnerNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "a5166dd66fa33ea3946d8e0664cd7b227e3cfc02c526b3b87c992738"
+    },
+    "positionNft": {
+      "policyId": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+      "assetName": "a5166dd66fa33ea3946d8e0664cd7b227e3cfc02c526b3b87c992738"
+    }
+  },
+  "liquidate": {
+    "tx": "cda16a79e7900c14e168952c7c35b30a6749138e08a93023e02c7ee95c26341d",
+    "debt": "1081326155",
+    "reward": "7399",
+    "taken": "807400",
+    "remainder": "192600",
+    "repaid": "1081327237",
+    "shortfall": "0",
+    "remainNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "a5166dd66fa33ea3946d8e0664cd7b227e3cfc02c526b3b87c992738524d4e"
+    }
+  },
+  "collectRemain": {
+    "tx": "5db52ea31b0f0b72761b576d78e2524ed05d80d346d003d98243dbc6936721b5",
+    "reward": "3000000",
+    "remainNft": "2c15a3baccad91c614c11f4cd9c8cff3db7b2ecba76bd9ca5c7f4c2a524d4e"
+  },
+  "cancelClaim": {
+    "tx": "30a6c90fe44f96e95dde69359364bb2de053c2353d447861d00b0499775cc5a5",
+    "refunded": "20000000"
+  },
+  "rollback": {
+    "tx": "0cbe9d818899f190986f7446123a4674b889570ac3a521eacc3110bc28c649d6",
+    "recovered": "298500000",
+    "repaid": "150000251",
+    "shortfall": "0",
+    "remainNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "85f0bf524cf658154c650c6192332d63fb9a28dd218be2f441700712524d4e"
+    }
+  },
+  "redeem": {
+    "tx": "6827c7c1a3b0aafc38676c7e67cc91b43d8490d43e5dd12ff6b429dacf09519c",
+    "lovelace": "100000000",
+    "dtokenBurned": "99999998"
+  },
+  "modifyPosition": {
+    "tx": "95e3abf8cf0ce432aaeaeaed83b224376c358dde059650a5c8bc7b85905047ad"
+  },
+  "closeAsync": {
+    "tx": "261421ceaf98b42e235bed1ebc46927b37359ac39a76213fa55f50b4721411fe",
+    "sold": "213215",
+    "floor": "279404160",
+    "expiry": "1788519761000",
+    "bindingNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "0a20b0f81847976e171ef5295fb4a09d328af14a9b8641f3a273ad1b424e44"
+    }
+  },
+  "takeProfit": {
+    "tx": "ecc7436afbb9069016436c082011a1c60afb25c4c3f398bcdff501035b5c844a",
+    "sold": "213215",
+    "floor": "279397428",
+    "expiry": "1788520109000",
+    "bindingNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "2c15a3baccad91c614c11f4cd9c8cff3db7b2ecba76bd9ca5c7f4c2a424e44"
+    }
+  },
+  "updateMarketParam": {
+    "tx": "202ca877848478f7b12906e8936541c1cb2a705516c88f75cf0359b1deebe6d2",
+    "liquidatorRewardCap": "1200"
+  },
+  "withdrawFee": {
+    "tx": "8c5f1a211dbec4f20bba05915cc71e2774d24abf04e180efdf647b9c1858a09a",
+    "taken": "46849567"
+  },
+  "announceOracle": {
+    "tx": "67de5dda290ce7f239b8764bd836c2d5e9ac8c041221ad7f4de29fba6a447fa5",
+    "pendingOracle": "3158c9a7ba551eb3b6b9aa578e7995dec5ce34e272fde0bda76b46d1",
+    "readyAt": "1788606380000"
+  },
+  "settleClose": {
+    "tx": "0b7a2f2e118ddb41bbe365bdf40ad50b3a39690f62c66a9ebf10ae9edec04af3",
+    "proceeds": "288039116",
+    "repaid": "150001047",
+    "residual": "138038069",
+    "shortfall": "0",
+    "remainNft": {
+      "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+      "assetName": "2c15a3baccad91c614c11f4cd9c8cff3db7b2ecba76bd9ca5c7f4c2a524d4e"
+    }
+  },
+  "orders": [
+    {
+      "arm": "create-order",
+      "market": "fusdm",
+      "tx": "7fbbf32207bfc043a736f79fe6ceb2a5422a3ab31c817684f4414cce49a49f40",
+      "orderNft": {
+        "policyId": "19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d",
+        "assetName": "0577f9988afb27f8868aaf6f4dd9464fb507e61d738c3a41763fdefe"
+      },
+      "ownerNft": {
+        "policyId": "19ddca304a9f2216ddc23d3d03655cbc8e54deff8151eaa028fdea5d",
+        "assetName": "0577f9988afb27f8868aaf6f4dd9464fb507e61d738c3a41763fdefe4f574e"
+      },
+      "address": "addr_test1zqvamj3sf20jy9kacg7n6qm9tj7gu4x7l7q4r64q9r775hfdzjk7wvmnvwrgara7yay07vnhh78chyvla8yeuw5ltxyst7yvna",
+      "lovelace": "38000000",
+      "margin": "150000000",
+      "shortAmount": "300000000",
+      "isMarket": true
+    }
+  ],
+  "loans": [
+    {
+      "arm": "fill-sync",
+      "market": "fusdm",
+      "tx": "757bdf025cda5f0e5ffd779695666f564e93b49424fdbbf653643cff71d72bb5",
+      "loanAmount": "150000000",
+      "collateral": "213215",
+      "limitPrice": "1400/1",
+      "loanNft": {
+        "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+        "assetName": "d244f30ddfb30e2bee8b85fb3bc1d4601e71a51fbaf177ad60d3cda9"
+      },
+      "loanOwnerNft": {
+        "policyId": "6bc87e3e981ce88249be083fa3278b3a40f8ffafa43b2e1713e0dfe4",
+        "assetName": "13a79657a1bcc8880728897b29573aac85e7554e727c992c5befb274"
+      },
+      "positionNft": {
+        "policyId": "30ecfbefeaebe3cbf0b7d95aa50899626f5aa7c6ea94d26b8025900b",
+        "assetName": "13a79657a1bcc8880728897b29573aac85e7554e727c992c5befb274"
+      }
+    }
+  ]
+}
